@@ -1,19 +1,45 @@
-export default function Projects(){
+import React, { useEffect } from 'react'
+
+export default function Home(){
+  useEffect(()=>{
+    const texts = ["a Software Developer", "an AI Enthusiast", "a Tech Learner"]
+    let count = 0; let index = 0
+    let currentText = ''
+    let letter = ''
+    const el = document.querySelector('.typing')
+    let mounted = true
+    function type(){
+      if(!mounted) return
+      if(count === texts.length) count = 0
+      currentText = texts[count]
+      letter = currentText.slice(0, ++index)
+      if(el) el.textContent = letter
+      if(letter.length === currentText.length){
+        count++
+        index = 0
+        setTimeout(type, 1500)
+      } else {
+        setTimeout(type, 100)
+      }
+    }
+    type()
+    return ()=>{ mounted = false }
+  },[])
+
   return (
-    <div className="about">
-      <h2>Projects-------</h2>
-      <div>
-        <p><b> Personal Portfolio</b></p>
-        <p>🔹Description:</p>
-        <p>A responsive and modern personal portfolio website designed to showcase my skills, education, and projects. It serves as my digital identity where I can share my journey, achievements, and technical growth. The website is built with a clean UI and smooth navigation for an engaging user experience.</p>
-        <p>🔹Tech Stack:</p>
-        <p>HTML, CSS</p>
-        <p>🔹Features:</p>
-        <p>Interactive home section with typing animation, About section, Education and skills sections, Project showcase with preview links, Resume download option, Contact section with direct links to LinkedIn, GitHub, and Gmail.</p>
-        <center>
-          <img src="/img/portfolio.jpeg" alt="portfolio preview" style={{width:500}} />
-        </center>
+    <main className="home">
+      <div className="profile-container home-profile">
+        <img src="/img/WhatsApp%20Image%202025-11-16%20at%2019.56.38_944f3f99.jpg" alt="Kanishkaa" className="profile-photo" />
       </div>
-    </div>
+      <h1 className="one">Hi👋 Myself Kanishkaa</h1>
+      <h2>I'm <span className="typing" /></h2>
+      <div className="social-icons">
+        <a href="https://www.linkedin.com/in/kanishkaa-maheshkumar-874927327" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/Kanishkaa-M" target="_blank" rel="noreferrer" aria-label="GitHub"><i className="fab fa-github"></i></a>
+        <a href="mailto:kanishkaamaheshkumar@gmail.com" target="_blank" rel="noreferrer" aria-label="Gmail"><i className="fas fa-envelope"></i></a>
+        <a href="https://wa.me/919788086531" target="_blank" rel="noreferrer" aria-label="WhatsApp"><i className="fab fa-whatsapp"></i></a>
+        <a href="https://instagram.com/kanishkaamaheshkumar" target="_blank" rel="noreferrer" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
+      </div>
+    </main>
   )
 }
