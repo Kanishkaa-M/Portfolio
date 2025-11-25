@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import profile from '../assets/Profile.jpg'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 
 export default function Home(){
   useEffect(()=>{
@@ -29,14 +31,14 @@ export default function Home(){
   return (
     <main className="home">
       <div className="profile-container home-profile">
-        <img src="/img/WhatsApp%20Image%202025-11-16%20at%2019.56.38_944f3f99.jpg" alt="Kanishkaa" className="profile-photo" />
+        <img src={profile} alt="Kanishkaa" className="profile-photo"/>
       </div>
       <h1 className="one">Hi👋 Myself Kanishkaa</h1>
       <h2>I'm <span className="typing" /></h2>
       <div className="social-icons">
         <a href="https://www.linkedin.com/in/kanishkaa-maheshkumar-874927327" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
         <a href="https://github.com/Kanishkaa-M" target="_blank" rel="noreferrer" aria-label="GitHub"><i className="fab fa-github"></i></a>
-        <a href="mailto:kanishkaamaheshkumar@gmail.com" target="_blank" rel="noreferrer" aria-label="Gmail"><i className="fas fa-envelope"></i></a>
+        <a href="mailto:kanishkaamaheshkumar@gmail.com" target="_blank" rel="noreferrer" aria-label="Gmail"><i className="fas fa-envelope"></i> </a>
         <a href="https://wa.me/919788086531" target="_blank" rel="noreferrer" aria-label="WhatsApp"><i className="fab fa-whatsapp"></i></a>
         <a href="https://instagram.com/kanishkaamaheshkumar" target="_blank" rel="noreferrer" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
       </div>

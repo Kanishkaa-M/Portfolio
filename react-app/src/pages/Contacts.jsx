@@ -20,7 +20,7 @@ export default function Contacts(){
   },[])
 
   return (
-    <div className="about">
+    <div className="contacts">
       <h2>Contact-------</h2>
       <div className="cbox">
         <h4>Address 🏠:</h4>
