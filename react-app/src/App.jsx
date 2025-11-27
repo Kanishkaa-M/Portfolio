@@ -6,11 +6,13 @@ import Education from './pages/Education'
 import Projects from './pages/Projects'
 import Contacts from './pages/Contacts'
 import Nav from './components/Nav'
+import Background from './components/Background'
 
 
 export default function App(){
   return (
     <div>
+      <Background />
       <Nav />
       <Routes>
         <Route path="/" element={<Home/>} />
