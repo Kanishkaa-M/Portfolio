@@ -1,0 +1,133 @@
+/* Projects Page Styles */
+.projects-section {
+  padding: 40px 100px;
+}
+
+.projects-title {
+  text-align: center;
+  color: #00eaff;
+  margin-bottom: 28px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.featured-project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.project-media {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.project-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.project-info {
+  padding: 12px 20px;
+}
+
+.project-sub {
+  color: #9ad8d8;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.project-title {
+  color: #00eaff;
+  margin: 6px 0 14px;
+}
+
+.project-card {
+  background: rgba(0,0,0,0.5);
+  border-radius: 8px;
+  padding: 18px;
+  color: #dbeefe;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.project-excerpt {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.project-tech {
+  color: #40c4d8;
+  margin-top: 12px;
+}
+
+.project-actions { margin-top: 18px; }
+
+.view-btn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* Modal Styles */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 24px;
+}
+
+.modal {
+  background: linear-gradient(180deg, rgba(10,10,14,0.95), rgba(6,6,10,0.95));
+  color: #e6fbff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* Skills Section */
+.sbox {
+  padding: 14px;
+  margin-bottom: 50px;
+  display: inline-block;
+  width: 400px;
+  height: 200px;
+  margin-right: 50px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.04));
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 14px 40px rgba(2,6,23,0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .projects-section { padding: 28px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .featured-project { grid-template-columns: 1fr; }
+  .project-media { order: -1; }
+}

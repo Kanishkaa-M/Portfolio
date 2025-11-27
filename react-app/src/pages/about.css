@@ -1,0 +1,88 @@
+/* About Page Styles */
+.about h2 {
+  animation-delay: 0.2s;
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 40px;
+  color: #00eaff;
+  text-shadow: 0 0 12px rgba(0, 234, 255, 0.6);
+  letter-spacing: 1.5px;
+}
+
+.about div p {
+  animation-delay: 0.4s;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 10px 40px;
+  text-align: justify;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.about .box {
+  display: inline-block;
+  background: linear-gradient(135deg, #5ec7f3, #3a9bdc);
+  color: white;
+  margin: 15px;
+  padding: 18px 25px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  animation-delay: calc(0.5s + (var(--i, 0) * 0.15s));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about .box:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+}
+
+/* Box Styles (used in About interests) */
+.box {
+  padding: 12px;
+  display: inline-block;
+  width: 280px;
+  margin-left: 10px;
+  margin-right: 20px;
+  cursor: pointer;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(0,0,0,0.04));
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 8px 24px rgba(2,6,23,0.12);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Animation for About section */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about h2,
+.about div p,
+.about .box {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 700px) {
+  .about div p {
+    margin: 10px 20px;
+  }
+  .about .box {
+    width: 100%;
+    text-align: center;
+  }
+}

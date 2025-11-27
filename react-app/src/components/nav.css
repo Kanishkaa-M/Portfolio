@@ -1,0 +1,74 @@
+/* Navigation Styles */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 60px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: transparent; 
+  backdrop-filter: blur(6px); 
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.topbar .brand {
+  font-weight: 800;
+  font-size: 1.7rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+  transition: color 0.4s ease;
+}
+
+.topbar .brand:hover {
+  color: #dff6ff; 
+}
+
+.topbar nav {
+  display: flex;
+  gap: 28px;
+}
+
+.topbar nav a {
+  color: #f0f8ff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.topbar nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #ffffff;
+  transition: width 0.3s ease;
+}
+
+.topbar nav a:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.topbar nav a:hover::after {
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 700px) {
+  .topbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 20px;
+  }
+  .topbar nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+}

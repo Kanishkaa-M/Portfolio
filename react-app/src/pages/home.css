@@ -1,0 +1,44 @@
+.home {
+  font-size: 20px;
+  padding: 40px 100px;
+  position: relative;
+  background-image: url('../assets/herobg.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo appears first */
+.logo {
+  animation: fadeIn 1s ease-in-out;
+  margin-bottom: 40px;
+}
+
+/* Delay Home content to appear after Logo */
+.home-profile,
+.one,
+.typing,
+.social-icons {
+  animation: fadeIn 1s ease-in-out;
+  animation-delay: 2s; /* Delay after Logo animation */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.home-profile,
+.one,
+.typing,
+.social-icons {
+  animation-delay: 3s; /* Match Logo's total animation time */
+}

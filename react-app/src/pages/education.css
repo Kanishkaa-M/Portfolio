@@ -1,0 +1,43 @@
+/* Education Page Styles */
+.ebox {
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(0,0,0,0.03));
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.10);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.section {
+  padding: 20px;
+  margin: 15px;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.10);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+}
+
+.section h2 {
+  color: #00eaff;
+  text-shadow: 0 0 12px rgba(0, 234, 255, 0.6);
+  font-size: 1.6em;
+  border-bottom: 2px solid #00796b;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design for Education */
+@media (max-width: 700px) {
+  .ebox {
+    margin-bottom: 12px;
+  }
+  .section {
+    padding: 16px;
+    margin: 12px;
+  }
+}
