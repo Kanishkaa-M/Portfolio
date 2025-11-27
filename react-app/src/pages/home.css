@@ -1,16 +1,53 @@
+/* src/pages/Home.jsx styles */
 .home {
-  font-size: 20px;
-  padding: 40px 100px;
-  position: relative;
-  background-image: url('../assets/herobg.png');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  min-height: 100vh;
   justify-content: center;
+}
+
+.home-profile {
+  margin-bottom: 20px;
+}
+
+/* Existing typing animation styles from style.css */
+.typing {
+  color: #00eaff;
+  text-shadow: 0 0 12px rgba(0, 234, 255, 0.6);
+  font-weight: bold;
+  border-right: 3px solid #00796b;
+  padding-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Social icons styling */
+.social-icons {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #2c3e50;
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.social-icons a:hover {
+  background-color: #087ea4;
 }
 
 /* Logo appears first */
@@ -20,15 +57,7 @@
 }
 
 /* Delay Home content to appear after Logo */
-.home-profile,
-.one,
-.typing,
-.social-icons {
-  animation: fadeIn 1s ease-in-out;
-  animation-delay: 2s; /* Delay after Logo animation */
-  opacity: 0;
-  transform: translateY(20px);
-}
+
 
 @keyframes fadeIn {
   to {

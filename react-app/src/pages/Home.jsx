@@ -30,9 +30,7 @@ export default function Home(){
 
   return (
     <main className="home">
-      <div className="profile-container home-profile">
-        <img src={profile} alt="Kanishkaa" className="profile-photo"/>
-      </div>
+      
       <h1 className="one">Hi👋 Myself Kanishkaa</h1>
       <h2>I'm <span className="typing" /></h2>
       <div className="social-icons">
