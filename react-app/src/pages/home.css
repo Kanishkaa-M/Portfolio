@@ -23,6 +23,19 @@
   white-space: nowrap;
   overflow: hidden;
 }
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.typing {
+  animation: blink 0.8s infinite, typingGlow 2.2s ease-in-out infinite;
+}
+
+@keyframes typingGlow{
+  0% { text-shadow: 0 0 6px rgba(0,234,255,0.45); color: #00eaff; }
+  50% { text-shadow: 0 0 20px rgba(0,234,255,0.95); color: #00f0ff; }
+  100% { text-shadow: 0 0 6px rgba(0,234,255,0.45); color: #00eaff; }
+}
 
 /* Social icons styling */
 .social-icons {
@@ -71,3 +84,35 @@
 .social-icons {
   animation-delay: 3s; /* Match Logo's total animation time */
 }
+.one {
+  font-size: 3.8rem;               /* Same as screenshot */
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px #00eaff, 0 0 30px #00eaff; 
+  animation: fadeIn 1s ease-in-out;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.typing {
+  font-size: 2rem;
+  font-weight: 700;
+  padding-left: 5px;
+  color: #00eaff;
+}
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;    /* important – aligns text LEFT */
+  padding-left: 120px; 
+  justify-content: flex-start;   /* 👈 Puts content at top */
+  padding-top: 60px;       /* moves text to same left position */
+        /* proper top spacing */
+}
+/* Increase = more right, Decrease = more left */

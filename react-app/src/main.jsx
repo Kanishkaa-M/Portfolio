@@ -8,6 +8,7 @@ import './pages/home.css'
 import './pages/about.css'
 import './pages/education.css'
 import './pages/projects.css'
+import './pages/skills.css'
 import './pages/contacts.css'
 
 
