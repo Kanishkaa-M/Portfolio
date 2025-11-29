@@ -91,3 +91,25 @@
 .send-btn:hover {
   background: #00bcd1;
 }
+
+/* Success toast/modal */
+.contact-success {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.95);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.6);
+  font-weight: 700;
+  z-index: 2000;
+  opacity: 0;
+  animation: toastIn 0.28s ease forwards;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}

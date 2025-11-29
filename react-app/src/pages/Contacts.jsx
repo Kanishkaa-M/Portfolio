@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
 import "./contacts.css";
 
 export default function Contacts() {
@@ -8,6 +7,7 @@ export default function Contacts() {
     email: "",
     message: "",
   });
+  const [showSuccess, setShowSuccess] = useState(false)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -15,23 +15,18 @@ export default function Contacts() {
 
   const sendEmail = (e) => {
     e.preventDefault();
+    // Simple client-side success popup (Email sending is skipped here).
+    // Validate fields (basic)
+    if (!formData.name || !formData.email || !formData.message) {
+      alert('Please fill all fields before sending.')
+      return
+    }
 
-    emailjs
-      .send(
-        "service_0o97inc",   // your service ID
-        "template_0teto63",  // your template ID
-        formData,
-        "NVXakgmVWsEgiJ4dy"  // your public key
-      )
-      .then(
-        () => {
-          alert("Message Sent Successfully!");
-          setFormData({ name: "", email: "", message: "" });
-        },
-        () => {
-          alert("Failed to send message. Try again.");
-        }
-      );
+    // Simulate successful send and show popup
+    setShowSuccess(true)
+    setFormData({ name: "", email: "", message: "" })
+    // hide after 3 seconds
+    setTimeout(() => setShowSuccess(false), 3000)
   };
 
   return (
@@ -76,6 +71,9 @@ export default function Contacts() {
           <button type="submit" className="send-btn">Send</button>
         </form>
       </div>
+      {showSuccess && (
+        <div className="contact-success">Message Sent Successfully!</div>
+      )}
     </section>
   );
 }

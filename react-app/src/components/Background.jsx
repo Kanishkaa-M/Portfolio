@@ -152,6 +152,7 @@ export default function NetworkBackground() {
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
           zIndex: -1,
+          pointerEvents: 'none',
         }}
       />
       <canvas
@@ -164,6 +165,8 @@ export default function NetworkBackground() {
           height: "100%",
           display: "block",
           zIndex: 0,
+          pointerEvents: 'none',
+          touchAction: 'none'
         }}
       />
     </>
