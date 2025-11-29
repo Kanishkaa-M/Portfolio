@@ -1,89 +1,105 @@
-import React, { useState } from 'react'
-import portfolio from '../assets/image.png'
-import todo from '../assets/todo.jpeg'
-import ecommerce from '../assets/ecommerce.jpeg'
-import ai from '../assets/ai.jpeg'
+import React, { useState, useEffect } from "react";
+import portfolio from "../assets/image.png";
+import todo from "../assets/todo.jpeg";
+import ecommerce from "../assets/ecommerce.jpeg";
+import ai from "../assets/ai.jpeg";
 
 export default function Projects() {
-  const [open, setOpen] = useState(null)
+  const [expanded, setExpanded] = useState(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show-animate");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document.querySelectorAll(".project-row").forEach((el) => observer.observe(el));
+  }, []);
 
   const projects = [
     {
-      id: 'portfolio',
-      title: 'Portfolio',
-      subtitle: 'Personal Website',
-      description: `A responsive and modern personal portfolio website designed to showcase my skills, education, and projects. It serves as my digital identity where I can share my journey, achievements, and technical growth. The website is built with a clean UI and smooth navigation for an engaging user experience.`,
-      tech: ['HTML', 'CSS', 'JavaScript', 'React'],
-      image: portfolio
+      title: "Portfolio Website",
+      description:
+        "This is my personal portfolio website built using React. It includes smooth animations, responsive layouts, reusable components and a clean modern UI. I built this to showcase my projects, skills, education, and contact details. The entire website is designed from scratch with full mobile responsiveness.",
+      more: "The portfolio includes sections such as Home, About, Education, Projects and Contact. I used React Hooks, IntersectionObserver animations, and modern UI styling. Every component is separated and reusable. The project also includes smooth scroll animations and a dynamic typing effect.",
+      tech: ["React", "CSS", "JavaScript"],
+      image: portfolio,
     },
     {
-      id: 'todo',
-      title: 'To-Do List',
-      subtitle: 'Task Management App',
-      description: `A simple and intuitive To-Do List application built with React and Firebase. It allows users to create, manage, and organize tasks efficiently. The app features real-time synchronization, task prioritization, and due date reminders.`,
-      tech: ['React', 'Firebase'],
-      image: todo
+      title: "To-Do List Application",
+      description:
+        "A simple and elegant To-Do list application that helps manage daily tasks. Users can add, delete, and mark tasks as completed. Clean UI with minimal design that is easy to use.",
+      more: "The app uses React state management to handle task operations. Tasks are stored locally so they remain saved even after refresh. I plan to add Firebase backend sync in the future.",
+      tech: ["React", "Local Storage"],
+      image: todo,
     },
     {
-      id: 'ecommerce',
-      title: 'E-commerce Website',
-      subtitle: 'Online Store Platform',
-      description: `A full-stack e-commerce platform developed using React for the frontend, Node.js for the backend, and MongoDB for the database. It includes features like product listings, shopping cart, user authentication, and secure payment integration.`,
-      tech: ['React', 'Node.js', 'MongoDB'],
-      image: ecommerce
+      title: "E-Commerce Website",
+      description:
+        "A full-stack e-commerce platform with product listings, cart management, and checkout flow. Fully responsive and visually attractive interface.",
+      more: "Built using the MERN stack. Includes admin dashboard, product filters, cart sync, and backend authentication. One of the biggest projects I worked on.",
+      tech: ["React", "Node.js", "MongoDB"],
+      image: ecommerce,
     },
     {
-      id: 'ai-reminder',
-      title: 'AI Reminder Assistant',
-      subtitle: 'Smart Task Reminder',
-      description: `An AI-powered reminder assistant that uses natural language processing to understand user commands and set reminders. Built with React for the frontend, Python for the backend, and integrated with an AI API for voice recognition and task scheduling.`,
-      tech: ['React', 'Python', 'AI API'],
-      image: ai
-    }
-  ]
-
-  const selectedProject = projects.find(p => p.id === open)
+      title: "AI Reminder Assistant",
+      description:
+        "An AI-powered reminder tool that helps schedule tasks using natural language input. Simple UI with advanced backend power.",
+      more: "Uses NLP models for understanding reminders, supports voice command input and pushes scheduled notifications. Built using Python backend + React frontend.",
+      tech: ["React", "Python", "AI API"],
+      image: ai,
+    },
+  ];
 
   return (
     <section className="projects-section">
-      <h2 className="projects-title">Projects</h2>
-      <div className="projects-grid">
-        {projects.map(project => (
-          <div className="featured-project" key={project.id}>
-            <div className="project-media">
-              <img src={project.image} alt={project.title} />
+      <h2 className="projects-title">My Projects</h2>
+
+      <div className="projects-wrapper">
+        {projects.map((p, index) => (
+          <div
+            className={`project-row ${index % 2 === 1 ? "reverse" : ""}`}
+            key={index}
+          >
+            <div className="project-image-box">
+              <img src={p.image} alt={p.title} />
             </div>
-            <div className="project-info">
-              <p className="project-sub">{project.subtitle}</p>
-              <h3 className="project-title">{project.title}</h3>
-              <div className="project-card">
-                <p className="project-excerpt">{project.description}</p>
+
+            <div className="project-content">
+              <p className="featured">Featured Project</p>
+              <h3 className="project-title">{p.title}</h3>
+
+              <div className="project-description">
+                {p.description}
+                {expanded === index && (
+                  <p className="more-text">{p.more}</p>
+                )}
               </div>
-              <p className="project-tech">{project.tech.join(' | ')}</p>
-              <div className="project-actions">
-                <button className="view-btn" onClick={() => setOpen(project.id)}>VIEW DETAILS</button>
-              </div>
+
+              <button
+                className="view-more-btn"
+                onClick={() =>
+                  setExpanded(expanded === index ? null : index)
+                }
+              >
+                {expanded === index ? "View Less" : "View More"}
+              </button>
+
+              <ul className="tech-list">
+                {p.tech.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
             </div>
           </div>
         ))}
       </div>
-      
-
-      {selectedProject && (
-        <div className="modal-backdrop" onClick={() => setOpen(null)}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <h3>{selectedProject.title}</h3>
-            <p className="modal-sub">{selectedProject.subtitle}</p>
-            <img src={selectedProject.image} alt={selectedProject.title} style={{ maxWidth: '100%', borderRadius: 8, marginTop: 12 }} />
-            <p style={{ marginTop: 12 }}>{selectedProject.description}</p>
-            <p className="project-tech">{selectedProject.tech.join(' | ')}</p>
-            <div style={{ textAlign: 'right', marginTop: 12 }}>
-              <button className="view-btn" onClick={() => setOpen(null)}>Close</button>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
-      
-  )
+  );
 }

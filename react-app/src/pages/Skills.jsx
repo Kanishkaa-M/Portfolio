@@ -1,64 +1,58 @@
 import React from "react";
-import { motion } from "framer-motion";
 import htmlLogo from "../assets/html.png";
 import cssLogo from "../assets/css.png";
 import jsLogo from "../assets/javascript.png";
 import reactLogo from "../assets/reactjs.png";
+import cLogo from "../assets/c.png";
+import pythonLogo from "../assets/Python.jpg";
+import javaLogo from "../assets/java.png";
+import githubLogo from "../assets/github.png";
+import canvaLogo from "../assets/canva.jpeg";
+import cloudLogo from "../assets/Google cloud.png";
+import "./Skills.css"; // IMPORTANT — make sure this file name is correct
 
-// Reusable Card Component (inside same file)
+// Card Component
 function TechCard({ title, icon }) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.05, rotateY: 10, rotateX: 10 }}
-      transition={{ type: "spring", stiffness: 200, damping: 10 }}
-      style={cardStyle}
-    >
-      <div style={{ textAlign: "center", color: "white" }}>
-        <img src={icon} alt={title} style={iconStyle} />
-        <h3>{title}</h3>
+    <div className="tech-card">
+      <div className="tech-card-content">
+        <img src={icon} alt={title} className="tech-icon" />
+        <h3 className="tech-title">{title}</h3>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 // Main Component
 export default function Skills() {
   return (
-    <div style={containerStyle}>
-      <TechCard title="HTML Developer" icon={htmlLogo} />
-      <TechCard title="CSS Expert" icon={cssLogo} />
-      <TechCard title="JavaScript Developer" icon={jsLogo} />
-      <TechCard title="React Developer" icon={reactLogo} />
-    </div>
+    <section className="skills-section">
+      {/* Heading */}<div>
+      <h1 className="skills-heading">Languages</h1>
+
+      {/* Card Container */}
+      <div className="skills-container">
+        <TechCard icon={htmlLogo} title="HTML" />
+        <TechCard icon={cssLogo} title="CSS" />
+        <TechCard icon={jsLogo} title="JavaScript" />
+        <TechCard icon={reactLogo} title="ReactJS" />
+        <TechCard icon={cLogo} title="C" />
+        <TechCard icon={pythonLogo} title="Python" />
+        <TechCard icon={javaLogo} title="Java" />
+      </div>
+      </div>
+      <div>
+        <h1 className="skills-heading">Tools</h1>
+
+      {/* Card Container */}
+      <div className="skills-container">
+        <TechCard icon={githubLogo} title="GitHub" />
+        <TechCard icon={canvaLogo} title="Canva" />
+        <TechCard icon={cloudLogo} title="Google Cloud" />
+      </div>
+      </div>
+    </section>
   );
 }
 
-// Inline CSS Styles
-const containerStyle = {
-  display: "flex",
-  gap: "40px",
-  justifyContent: "center",
-  flexWrap: "wrap",
-  paddingTop: "60px",
-};
-
-const cardStyle = {
-  width: "260px",
-  height: "260px",
-  background: "linear-gradient(145deg, #121212, #0c0c0c)",
-  borderRadius: "20px",
-  border: "2px solid rgba(0, 255, 255, 0.3)",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  cursor: "pointer",
-  transition: "0.3s",
-  boxShadow: "0 0 20px rgba(0, 255, 255, 0.2)",
-};
-
-const iconStyle = {
-  width: "80px",
-  marginBottom: "20px",
-  filter: "drop-shadow(0 0 10px rgba(0, 255, 255, 0.5))",
-};
 

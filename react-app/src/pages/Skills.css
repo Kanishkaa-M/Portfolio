@@ -1,63 +1,84 @@
+/* --- SKILLS HEADING ---- */
+.skills-heading {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 700;
+  color: white;
+  margin-top: 40px;
+}
+
+/* --- CONTAINER --- */
 .skills-container {
   display: flex;
   gap: 40px;
   justify-content: center;
   flex-wrap: wrap;
-  padding-top: 60px;
+  padding: 60px 20px;
 }
 
-/* OUTER NEON GLOW + INNER RING */
+/* Make the whole skills section transparent so the background shows through */
+.skills-section {
+  background: transparent;
+  padding: 20px 0 60px 0;
+}
+
+/* --- OUTER GLOW BORDER --- */
 .tech-card {
   width: 260px;
   height: 260px;
   padding: 2px;
   border-radius: 20px;
 
-  /* Gradient border like your image */
-  background: linear-gradient(135deg, #00eaff, #0077ff, #00eaff);
+  /* Make card background transparent so page background shows through */
+  background: transparent;
+  border: 1px solid rgba(0,234,255,0.08);
 
-  /* Outer Glow */
-  box-shadow: 
-    0 0 25px #00eaff,
-    0 0 50px rgba(0, 234, 255, 0.8),
-    inset 0 0 20px rgba(0, 234, 255, 0.5);
+  /* Glow */
+  box-shadow:
+    0 0 25px rgba(0, 234, 255, 0.6),
+    0 0 50px rgba(0, 234, 255, 0.35);
 
-  transition: 0.4s;
+  transition: 0.4s ease;
   cursor: pointer;
 }
 
-/* Card Inner Black Box */
+/* --- TRANSPARENT INNER CARD (GLASS EFFECT) --- */
 .tech-card-content {
-  background: #0a0f14;
-  height: 100%;
   width: 100%;
+  height: 100%;
   border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.05);       /* Transparent */
+  backdrop-filter: blur(12px);                 /* Glass blur */
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border */
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  /* subtle inner glow */
-  box-shadow: inset 0 0 12px rgba(0, 234, 255, 0.3);
 }
 
-/* Hover — brighter glow */
+/* --- ON HOVER --- */
 .tech-card:hover {
+  transform: translateY(-6px);
   box-shadow:
-    0 0 35px #00eaff,
-    0 0 70px rgba(0, 234, 255, 0.9),
-    inset 0 0 25px rgba(0, 234, 255, 0.6);
+    0 0 35px rgba(0, 234, 255, 1),
+    0 0 70px rgba(0, 234, 255, 0.9);
 }
 
-/* Icon styling */
+/* --- ICON --- */
 .tech-icon {
   width: 80px;
-  margin-bottom: 18px;
-  filter: drop-shadow(0 0 8px rgba(0, 234, 255, 0.7));
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 10px rgba(0, 234, 255, 0.8));
 }
 
+/* --- TITLE --- */
 .tech-title {
   color: white;
   font-size: 20px;
   font-weight: 600;
+  text-shadow: 0 0 8px rgba(0, 234, 255, 0.8);
 }
