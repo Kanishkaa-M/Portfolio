@@ -41,7 +41,7 @@
 .social-icons {
   margin-top: 24px;
   display: flex;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -57,6 +57,10 @@
   color: #fff;
   text-decoration: none;
   transition: background-color 0.3s, color 0.3s;
+}
+
+.social-icons a i {
+  font-size: 20px;
 }
 
 .social-icons a:hover {
@@ -85,7 +89,7 @@
   animation-delay: 3s; /* Match Logo's total animation time */
 }
 .one {
-  font-size: 3.8rem;               /* Same as screenshot */
+  font-size: 4.5rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 10px;
@@ -93,7 +97,7 @@
   animation: fadeIn 1s ease-in-out;
 }
 h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 600;
   margin-top: 0;
   margin-bottom: 20px;
@@ -101,7 +105,7 @@ h2 {
 }
 
 .typing {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
   padding-left: 5px;
   color: #00eaff;
@@ -116,3 +120,31 @@ h2 {
         /* proper top spacing */
 }
 /* Increase = more right, Decrease = more left */
+
+/* Download button with cyan glow effect */
+.download-btn-glow {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00eaff 0%, #00bcd1 100%);
+  border: 2px solid #00eaff;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.6), 0 0 40px rgba(0, 234, 255, 0.3);
+  text-shadow: 0 0 10px rgba(0, 234, 255, 0.5);
+}
+
+.download-btn-glow:hover {
+  box-shadow: 0 0 30px rgba(0, 234, 255, 0.9), 0 0 60px rgba(0, 234, 255, 0.6);
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #00f0ff 0%, #00e0e0 100%);
+}
+
+.download-btn-glow:active {
+  transform: translateY(0);
+}

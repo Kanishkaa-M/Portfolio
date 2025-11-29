@@ -40,6 +40,8 @@ export default function Home(){
         <a href="https://wa.me/919788086531" target="_blank" rel="noreferrer" aria-label="WhatsApp"><i className="fab fa-whatsapp"></i></a>
         <a href="https://instagram.com/kanishkaamaheshkumar" target="_blank" rel="noreferrer" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
       </div>
+
+      <a href="/Kanishkaa_Resume.pdf" download className="download-btn-glow">Download CV</a>
     </main>
   )
 }
