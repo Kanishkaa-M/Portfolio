@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from "react";
-
+import "./Background.css"; // ← Make sure this line exists
 export default function NetworkBackground() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     const c = canvasRef.current;
+    if (!c) return;
     const ctx = c.getContext("2d");
 
     const options = {
@@ -138,16 +139,33 @@ export default function NetworkBackground() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
-        zIndex: -1,
-      }}
-    />
+    <>
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          backgroundImage: "url('/background.jpeg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+          zIndex: -1,
+        }}
+      />
+      <canvas
+        ref={canvasRef}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          display: "block",
+          zIndex: 0,
+        }}
+      />
+    </>
   );
 }
