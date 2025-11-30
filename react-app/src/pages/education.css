@@ -1,43 +1,211 @@
-/* Education Page Styles */
-.ebox {
-  padding: 12px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(0,0,0,0.03));
+.education-section{
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #e6f7ff;
+}
+
+.section-title{
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 24px;
+  color: #c3f6ff;
+  text-shadow: 0 0 12px rgba(0,255,255,0.08);
+}
+
+.timeline{
+  position: relative;
+  padding: 20px 0;
+}
+
+/* vertical line */
+.timeline::before{
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,255,255,0.15), rgba(0,150,255,0.06));
+  border-radius: 2px;
+}
+
+.timeline-item{
+  position: relative;
+  width: calc(50% - 40px);
+  padding: 18px 22px;
+  box-sizing: border-box;
+  background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 10px 30px rgba(2,6,23,0.10);
   backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  color: #e6f7ff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45), 0 0 18px rgba(0,200,255,0.03);
+  margin: 18px 0;
 }
 
-.section {
-  padding: 20px;
-  margin: 15px;
-  border-radius: 15px;
-  border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 10px 30px rgba(2,6,23,0.10);
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
+.timeline-item:hover{
+  transform: translateX(0) translateY(-10px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.55), 0 0 30px rgba(0,220,255,0.08);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  cursor: default;
 }
 
-.section h2 {
-  color: #00eaff;
-  text-shadow: 0 0 12px rgba(0, 234, 255, 0.6);
-  font-size: 1.6em;
-  border-bottom: 2px solid #00796b;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
+.timeline-item .content h3{
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  color: #aef6ff;
 }
 
-/* Responsive Design for Education */
-@media (max-width: 700px) {
-  .ebox {
-    margin-bottom: 12px;
+.timeline-item .institute{
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  color: #eaffff;
+  font-size: 17px;
+}
+
+.timeline-item .period{
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  color: #bfeeff;
+}
+
+.timeline-item .detail{
+  margin: 4px 0;
+  font-size: 15px;
+  color: #d8f8ff;
+}
+
+.timeline-item.left{
+  left: 0;
+  margin-left: 0;
+  transform: translateX(-30px);
+}
+
+.timeline-item.right{
+  margin-left: auto;
+  right: 0;
+  transform: translateX(30px);
+}
+
+.timeline-item.center{
+  width: calc(100% - 60px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.marker{
+  position: absolute;
+  top: 20px;
+  right: -14px;
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle at 30% 30%, #fff, #00f0ff 60%);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(0,240,255,0.25), 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.timeline-item.left .marker{
+  left: -14px;
+  right: auto;
+}
+
+.timeline-item.center .marker{
+  left: calc(50% - 9px);
+  right: auto;
+}
+
+.achievements{
+  margin: 6px 0 0 18px;
+}
+
+.achievements li{
+  margin: 8px 0;
+  font-size: 15px;
+  color: #e8fbff;
+}
+
+/* animation helpers */
+.hidden{
+  opacity: 0;
+  transition: opacity 640ms cubic-bezier(.2,.9,.2,1), transform 640ms cubic-bezier(.2,.9,.2,1);
+}
+.hidden.left{
+  transform: translateX(-70px) translateY(10px) scale(0.995);
+}
+.hidden.right{
+  transform: translateX(70px) translateY(10px) scale(0.995);
+}
+.hidden.center{
+  transform: translateY(60px) scale(0.995);
+}
+.in-view{
+  opacity: 1;
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+/* marker pulse animation */
+.timeline-marker.marker-active{
+  animation: marker-pulse 900ms ease-out forwards;
+}
+.timeline-marker.marker-active .marker-icon{ /* slight pop */
+  transform: scale(1.12);
+}
+@keyframes marker-pulse{
+  0%{ transform: translateX(-50%) scale(1); box-shadow: 0 0 6px rgba(0,240,255,0.18); }
+  40%{ transform: translateX(-50%) scale(1.28); box-shadow: 0 0 18px rgba(0,240,255,0.28); }
+  100%{ transform: translateX(-50%) scale(1); box-shadow: 0 0 10px rgba(0,240,255,0.18); }
+}
+
+/* Responsive: single column on small screens */
+@media (max-width: 800px){
+  .timeline::before{
+    left: 8px;
   }
-  .section {
-    padding: 16px;
-    margin: 12px;
+  .timeline-item,
+  .timeline-item.center{
+    width: calc(100% - 36px);
+    transform: translateX(0);
+    margin-left: 28px;
+  }
+  .timeline-item .marker,
+  .timeline-item.left .marker,
+  .timeline-item.right .marker{
+    left: -26px;
+    right: auto;
   }
 }
+
+/* small polish for global contrast */
+body .education-section .timeline-item{
+  border-color: rgba(0,200,255,0.06);
+}
+
+/* marker (now positioned absolutely inside .timeline) */
+.timeline-marker{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-icon{
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+}
+
+/* arrow icon rotation/positioning */
+.marker-icon.arrow-icon{
+  transform-origin: 50% 50%;
+}
+.marker-icon.arrow-icon.left path{ transform-origin: 50% 50%; }
+.marker-icon.arrow-icon.right path{ transform-origin: 50% 50%; }
+.timeline-marker.left .marker-icon.arrow-icon{ transform: translateX(-6px) rotate(180deg); }
+.timeline-marker.right .marker-icon.arrow-icon{ transform: translateX(6px) rotate(0deg); }
+.timeline-marker.center .center-icon{ transform: translateY(0); }
