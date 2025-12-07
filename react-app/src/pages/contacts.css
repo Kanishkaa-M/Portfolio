@@ -8,7 +8,6 @@
   background: transparent; /* keep page background visible; the box has its own background */
 }
 
-/* Responsive: on small screens keep the card centered and full-width */
 @media (max-width: 768px) {
   .contact-section {
     justify-content: center;
@@ -92,7 +91,7 @@
   background: #00bcd1;
 }
 
-/* Success toast/modal */
+
 .contact-success {
   position: fixed;
   top: 20px;

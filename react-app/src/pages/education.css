@@ -41,8 +41,8 @@
   backdrop-filter: blur(6px);
   color: #e6f7ff;
   border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.45), 0 0 18px rgba(0,200,255,0.03);
-  margin: 18px 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45), 0 0 18px rgba(0,200,255,0.03), 0 0 36px rgba(33,150,243,0.06);
+  margin: 15px 0;
 }
 
 .timeline-item:hover{
@@ -54,39 +54,41 @@
 
 .timeline-item .content h3{
   margin: 0 0 6px 0;
-  font-size: 22px;
+  font-size: 26px;
   color: #aef6ff;
+  text-shadow: 0 6px 18px rgba(33,150,243,0.10);
 }
 
 .timeline-item .institute{
   margin: 0 0 6px 0;
   font-weight: 700;
   color: #eaffff;
-  font-size: 17px;
+  font-size: 19px;
 }
 
 .timeline-item .period{
   margin: 0 0 8px 0;
-  font-size: 14px;
+  font-size: 16px;
   color: #bfeeff;
 }
 
 .timeline-item .detail{
   margin: 4px 0;
-  font-size: 15px;
+  font-size: 17px;
   color: #d8f8ff;
 }
 
 .timeline-item.left{
   left: 0;
   margin-left: 0;
-  transform: translateX(-30px);
+  transform: translateX(0);
 }
 
 .timeline-item.right{
   margin-left: auto;
   right: 0;
-  transform: translateX(30px);
+  transform: translateX(0);
+  padding-left: 34px;
 }
 
 .timeline-item.center{
@@ -122,7 +124,7 @@
 
 .achievements li{
   margin: 8px 0;
-  font-size: 15px;
+  font-size: 18px;
   color: #e8fbff;
 }
 
@@ -149,8 +151,33 @@
 .timeline-marker.marker-active{
   animation: marker-pulse 900ms ease-out forwards;
 }
-.timeline-marker.marker-active .marker-icon{ /* slight pop */
-  transform: scale(1.12);
+.timeline-marker.marker-active .marker-badge{ /* slight pop */
+  transform: scale(1.15);
+}
+.timeline-marker:hover .marker-badge{
+  .timeline-item .content{ position: relative; z-index: 6; }
+  /* Use clip-path to create a transparent diamond notch on the side of each card
+     This cuts a small rotated-square (diamond) out of the card so the animated
+     background shows through like the reference image. */
+  .timeline-item.left{
+    /* notch on right edge: 26px notch centered vertically */
+    -webkit-clip-path: polygon(
+      0 0, calc(100% - 26px) 0, calc(100% - 26px) 40%, 100% 50%, calc(100% - 26px) 60%, calc(100% - 26px) 100%, 0 100%
+    );
+    clip-path: polygon(
+      0 0, calc(100% - 26px) 0, calc(100% - 26px) 40%, 100% 50%, calc(100% - 26px) 60%, calc(100% - 26px) 100%, 0 100%
+    );
+  }
+  .timeline-item.right{
+    /* notch on left edge mirrored */
+    -webkit-clip-path: polygon(
+      26px 0, 100% 0, 100% 100%, 26px 100%, 26px 60%, 0 50%, 26px 40%
+    );
+    clip-path: polygon(
+      26px 0, 100% 0, 100% 100%, 26px 100%, 26px 60%, 0 50%, 26px 40%
+    );
+  }
+  transform: scale(1.08);
 }
 @keyframes marker-pulse{
   0%{ transform: translateX(-50%) scale(1); box-shadow: 0 0 6px rgba(0,240,255,0.18); }
@@ -186,9 +213,9 @@ body .education-section .timeline-item{
 .timeline-marker{
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  width: 28px;
-  height: 28px;
+  transform: translate(-50%,-50%);
+  width: 72px;
+  height: 72px;
   z-index: 3;
   display: flex;
   align-items: center;
@@ -200,12 +227,46 @@ body .education-section .timeline-item{
   filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
 }
 
-/* arrow icon rotation/positioning */
-.marker-icon.arrow-icon{
-  transform-origin: 50% 50%;
+/* marker badge styling */
+.marker-badge{
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
+  transition: transform 200ms ease;
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(33,150,243,0.08);
 }
-.marker-icon.arrow-icon.left path{ transform-origin: 50% 50%; }
-.marker-icon.arrow-icon.right path{ transform-origin: 50% 50%; }
-.timeline-marker.left .marker-icon.arrow-icon{ transform: translateX(-6px) rotate(180deg); }
-.timeline-marker.right .marker-icon.arrow-icon{ transform: translateX(6px) rotate(0deg); }
-.timeline-marker.center .center-icon{ transform: translateY(0); }
+
+/* permanent transparent diamond notch on the card edge to show background */
+.timeline-item.left{
+  -webkit-clip-path: polygon(0 0, calc(100% - 26px) 0, calc(100% - 26px) 40%, 100% 50%, calc(100% - 26px) 60%, calc(100% - 26px) 100%, 0 100%);
+  clip-path: polygon(0 0, calc(100% - 26px) 0, calc(100% - 26px) 40%, 100% 50%, calc(100% - 26px) 60%, calc(100% - 26px) 100%, 0 100%);
+}
+.timeline-item.right{
+  -webkit-clip-path: polygon(26px 0, 100% 0, 100% 100%, 26px 100%, 26px 60%, 0 50%, 26px 40%);
+  clip-path: polygon(26px 0, 100% 0, 100% 100%, 26px 100%, 26px 60%, 0 50%, 26px 40%);
+}
+
+/* small white triangular tip attached to badge pointing toward the card */
+.timeline-marker.left::after,
+.timeline-marker.right::after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  z-index: 6;
+}
+.timeline-marker.left::after{
+  /* points to the LEFT (toward the left-side card) */
+  left: -6px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 12px solid #ffffff;
+}
+.timeline-marker.right::after{
+  /* points to the RIGHT (toward the right-side card) */
+  right: -6px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 12px solid #ffffff;
+}

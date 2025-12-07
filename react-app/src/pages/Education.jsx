@@ -1,4 +1,8 @@
 import React, {useRef, useLayoutEffect, useState} from 'react'
+import gradImg from '../assets/graduation.png'
+import schoolImg from '../assets/school.png'
+import certImg from '../assets/certifications.png'
+import trophyImg from '../assets/trophy.png'
 import './education.css'
 
 function TimelineItem({forwardRef, side = 'left', title, institute, period, details, delay}){
@@ -130,21 +134,41 @@ export default function Education(){
 
         {/* markers placed on the center line — positions computed from refs. Use entries to know side */}
         {(() => {
+          const getMarkerIcon = (idx) => {
+            const item = items[idx]
+            if(!item) return 'graduation'
+            // Map by title keywords
+            if(item.title && item.title.toLowerCase().includes('undergraduate')) return 'graduation'
+            if(item.title && (item.title.toLowerCase().includes('secondary') || item.title.toLowerCase().includes('higher secondary') || item.title.toLowerCase().includes('sslc') || item.title.toLowerCase().includes('hsc'))) return 'school'
+            if(item.title && item.title.toLowerCase().includes('achievements')) return 'trophy'
+            if(item.title && item.title.toLowerCase().includes('certificat')) return 'certificate'
+            return 'graduation'
+          }
           const entries = items.map(it => ({side: it.side}))
           return markerTops.map((top, i) => {
             const side = entries[i] ? entries[i].side : 'center'
+            const iconType = getMarkerIcon(i)
             return (
               <div key={`m-${i}`} className={`timeline-marker ${side}`} style={{top: top + 'px'}}>
-                {side === 'center' ? (
-                  <svg className="marker-icon center-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                    <path fill="#00f0ff" d="M12 2.5l1.9 4.3 4.8.7-3.5 3.4.8 4.8L12 14.9l-4 2.8.8-4.8L5.3 7.5l4.8-.7L12 2.5z" />
-                  </svg>
-                ) : (
-                  <svg className={`marker-icon arrow-icon ${side}`} viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                    <circle cx="12" cy="12" r="9" fill="#002229" opacity="0.85" />
-                    <path fill="#00f0ff" d="M8 12l6-4v8z" />
-                  </svg>
-                )}
+                <svg className="marker-badge" viewBox="0 0 60 60" width="72" height="72" aria-hidden="true">
+                  {/* outer white border circle */}
+                  <circle cx="30" cy="30" r="28" fill="#ffffff" opacity="0.9" />
+                  {/* blue background */}
+                  <circle cx="30" cy="30" r="25" fill="#2196F3" />
+                  {/* icon container - render based on type */}
+                  {iconType === 'school' && (
+                    <image className="marker-icon" href={schoolImg} x="14" y="14" width="32" height="32" preserveAspectRatio="xMidYMid meet" aria-hidden="true" />
+                  )}
+                  {iconType === 'trophy' && (
+                    <image className="marker-icon" href={trophyImg} x="14" y="14" width="32" height="32" preserveAspectRatio="xMidYMid meet" aria-hidden="true" />
+                  )}
+                  {iconType === 'certificate' && (
+                    <image className="marker-icon" href={certImg} x="14" y="14" width="32" height="32" preserveAspectRatio="xMidYMid meet" aria-hidden="true" />
+                  )}
+                  {iconType === 'graduation' && (
+                    <image className="marker-icon" href={gradImg} x="14" y="14" width="32" height="32" preserveAspectRatio="xMidYMid meet" aria-hidden="true" />
+                  )}
+                </svg>
               </div>
             )
           })
