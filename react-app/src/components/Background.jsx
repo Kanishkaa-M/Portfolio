@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import "./Background.css"; // ← Make sure this line exists
+import "./Background.css"; 
 export default function NetworkBackground() {
   const canvasRef = useRef(null);
 
@@ -11,14 +11,14 @@ export default function NetworkBackground() {
     const options = {
       num: 50,
       particle: {
-        color: "rgba(64,255,64,0.6)",
+        color: "rgba(252, 252, 252, 0.6)",
         szMin: 0.5,
         szMax: 1,
         spMin: 0.05,
         spMax: 0.5,
       },
       link: {
-        color: "rgba(128,255,128,0.3)",
+        color: "rgba(237, 241, 237, 0.3)",
         maxDist: 160,
       },
     };
@@ -131,8 +131,6 @@ export default function NetworkBackground() {
     resize();
     window.addEventListener("resize", resize);
     integrate();
-
-    // Cleanup when component unmounts
     return () => {
       window.removeEventListener("resize", resize);
     };

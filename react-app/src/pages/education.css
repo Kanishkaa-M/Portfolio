@@ -1,3 +1,13 @@
+@property --a {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotateGlow {
+  to { --a: 1turn; }
+}
+
 .education-section{
   padding: 40px 20px;
   max-width: 1000px;
@@ -9,8 +19,8 @@
   text-align: center;
   font-size: 32px;
   margin-bottom: 24px;
-  color: #c3f6ff;
-  text-shadow: 0 0 12px rgba(0,255,255,0.08);
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
 }
 
 .timeline{
@@ -36,13 +46,20 @@
   width: calc(50% - 40px);
   padding: 18px 22px;
   box-sizing: border-box;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
-  backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.02);
+  border: 2px solid;
+  border-image: conic-gradient(from var(--a, 0deg), #00eaff 0%, #0000 25%) 1;
+  backdrop-filter: blur(12px);
   color: #e6f7ff;
   border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.45), 0 0 18px rgba(0,200,255,0.03), 0 0 36px rgba(33,150,243,0.06);
+  box-shadow: 
+    0 0 30px rgba(0, 234, 255, 0.6),
+    0 0 60px rgba(0, 234, 255, 0.3),
+    0 6px 20px rgba(0,0,0,0.45),
+    0 0 18px rgba(0,200,255,0.03),
+    0 0 36px rgba(33,150,243,0.06);
   margin: 15px 0;
+  animation: rotateGlow 3s linear infinite;
 }
 
 .timeline-item:hover{

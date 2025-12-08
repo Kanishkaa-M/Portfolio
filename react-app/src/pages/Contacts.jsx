@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./contacts.css";
+import Globe from "../components/Globe";
 
 export default function Contacts() {
   const [formData, setFormData] = useState({
@@ -88,6 +89,10 @@ export default function Contacts() {
             <button type="submit" className="send-btn">Send</button>
           </form>
         </div>
+      </div>
+
+      <div className="globe-wrapper">
+        <Globe />
       </div>
 
       {showSuccess && (

@@ -37,7 +37,6 @@ export default function ElectricBorder({
       canvas.style.height = h + "px";
       canvas.width = Math.max(1, Math.floor(w * dpr));
       canvas.height = Math.max(1, Math.floor(h * dpr));
-      // reset transform because we change size
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 

@@ -6,9 +6,10 @@
 
 .projects-title {
   text-align: center;
-  color: #fff;
+  color: #ffffff;
   font-size: 34px;
   margin-bottom: 50px;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
 }
 
 .project-row {
