@@ -167,8 +167,11 @@
   -webkit-mask: 
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: source-out;
-          mask-composite: subtract;
+  mask-composite: subtract;
 
   animation: spinGlow 2.5s linear infinite;
   filter: url(#glow-2);
