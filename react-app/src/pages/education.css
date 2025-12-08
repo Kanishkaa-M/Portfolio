@@ -28,7 +28,7 @@
   padding: 20px 0;
 }
 
-/* vertical line */
+
 .timeline::before{
   content: '';
   position: absolute;
@@ -145,7 +145,7 @@
   color: #e8fbff;
 }
 
-/* animation helpers */
+
 .hidden{
   opacity: 0;
   transition: opacity 640ms cubic-bezier(.2,.9,.2,1), transform 640ms cubic-bezier(.2,.9,.2,1);
@@ -164,20 +164,17 @@
   transform: translateX(0) translateY(0) scale(1);
 }
 
-/* marker pulse animation */
 .timeline-marker.marker-active{
   animation: marker-pulse 900ms ease-out forwards;
 }
-.timeline-marker.marker-active .marker-badge{ /* slight pop */
+.timeline-marker.marker-active .marker-badge{
   transform: scale(1.15);
 }
 .timeline-marker:hover .marker-badge{
   .timeline-item .content{ position: relative; z-index: 6; }
-  /* Use clip-path to create a transparent diamond notch on the side of each card
-     This cuts a small rotated-square (diamond) out of the card so the animated
-     background shows through like the reference image. */
+  
   .timeline-item.left{
-    /* notch on right edge: 26px notch centered vertically */
+   
     -webkit-clip-path: polygon(
       0 0, calc(100% - 26px) 0, calc(100% - 26px) 40%, 100% 50%, calc(100% - 26px) 60%, calc(100% - 26px) 100%, 0 100%
     );
@@ -186,7 +183,7 @@
     );
   }
   .timeline-item.right{
-    /* notch on left edge mirrored */
+   
     -webkit-clip-path: polygon(
       26px 0, 100% 0, 100% 100%, 26px 100%, 26px 60%, 0 50%, 26px 40%
     );
@@ -202,7 +199,6 @@
   100%{ transform: translateX(-50%) scale(1); box-shadow: 0 0 10px rgba(0,240,255,0.18); }
 }
 
-/* Responsive: single column on small screens */
 @media (max-width: 800px){
   .timeline::before{
     left: 8px;
@@ -221,12 +217,10 @@
   }
 }
 
-/* small polish for global contrast */
 body .education-section .timeline-item{
   border-color: rgba(0,200,255,0.06);
 }
 
-/* marker (now positioned absolutely inside .timeline) */
 .timeline-marker{
   position: absolute;
   left: 50%;
@@ -244,7 +238,6 @@ body .education-section .timeline-item{
   filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
 }
 
-/* marker badge styling */
 .marker-badge{
   filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45));
   transition: transform 200ms ease;
@@ -252,7 +245,6 @@ body .education-section .timeline-item{
   box-shadow: 0 0 18px rgba(33,150,243,0.08);
 }
 
-/* permanent transparent diamond notch on the card edge to show background */
 .timeline-item.left{
   -webkit-clip-path: polygon(0 0, calc(100% - 26px) 0, calc(100% - 26px) 40%, 100% 50%, calc(100% - 26px) 60%, calc(100% - 26px) 100%, 0 100%);
   clip-path: polygon(0 0, calc(100% - 26px) 0, calc(100% - 26px) 40%, 100% 50%, calc(100% - 26px) 60%, calc(100% - 26px) 100%, 0 100%);
@@ -262,7 +254,6 @@ body .education-section .timeline-item{
   clip-path: polygon(26px 0, 100% 0, 100% 100%, 26px 100%, 26px 60%, 0 50%, 26px 40%);
 }
 
-/* small white triangular tip attached to badge pointing toward the card */
 .timeline-marker.left::after,
 .timeline-marker.right::after{
   content: '';
@@ -274,14 +265,12 @@ body .education-section .timeline-item{
   z-index: 6;
 }
 .timeline-marker.left::after{
-  /* points to the LEFT (toward the left-side card) */
   left: -6px;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
   border-right: 12px solid #ffffff;
 }
 .timeline-marker.right::after{
-  /* points to the RIGHT (toward the right-side card) */
   right: -6px;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;

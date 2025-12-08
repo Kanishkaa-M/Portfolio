@@ -36,7 +36,6 @@ export default function Education(){
     ]}
   ]
 
-  // place achievements on the right and certifications on the left
 
 
   const itemRefs = useRef([])
@@ -57,7 +56,7 @@ export default function Education(){
     compute()
     const onResize = () => compute()
     window.addEventListener('resize', onResize)
-    // also recompute after fonts/images load
+
     window.addEventListener('load', compute)
     return ()=>{
       window.removeEventListener('resize', onResize)
@@ -65,10 +64,9 @@ export default function Education(){
     }
   },[])
 
-  // IntersectionObserver to add `in-view` class when items scroll into view
+  
   React.useEffect(()=>{
     if(!('IntersectionObserver' in window)){
-      // If unsupported, just reveal everything
       itemRefs.current.forEach(el => el && el.classList.add('in-view'))
       return
     }
@@ -77,14 +75,12 @@ export default function Education(){
       entries.forEach(entry => {
         if(entry.isIntersecting){
           entry.target.classList.add('in-view')
-          // find index of this element in refs and pulse the corresponding marker
           const idx = itemRefs.current.indexOf(entry.target)
           if(typeof idx === 'number' && idx >= 0){
             const markers = document.querySelectorAll('.timeline-marker')
             const m = markers[idx]
             if(m){
               m.classList.add('marker-active')
-              // optional: remove pulse class after animation so it can re-trigger if needed
               setTimeout(()=> m.classList.remove('marker-active'), 1200)
             }
           }
@@ -107,8 +103,6 @@ export default function Education(){
       <h2 className="section-title">🎓 Education & Credentials</h2>
 
       <div className="timeline" ref={timelineRef}>
-        {/* build a combined entries array so refs and markers line up */}
-        {/** entries: each entry has {type: 'item'|'center', side, data} **/}
         {
           (() => {
             const entries = items.map(it => ({type: it.list ? 'block' : 'item', side: it.side, data: it}))
@@ -131,13 +125,10 @@ export default function Education(){
             })
           })()
         }
-
-        {/* markers placed on the center line — positions computed from refs. Use entries to know side */}
         {(() => {
           const getMarkerIcon = (idx) => {
             const item = items[idx]
             if(!item) return 'graduation'
-            // Map by title keywords
             if(item.title && item.title.toLowerCase().includes('undergraduate')) return 'graduation'
             if(item.title && (item.title.toLowerCase().includes('secondary') || item.title.toLowerCase().includes('higher secondary') || item.title.toLowerCase().includes('sslc') || item.title.toLowerCase().includes('hsc'))) return 'school'
             if(item.title && item.title.toLowerCase().includes('achievements')) return 'trophy'
@@ -151,11 +142,8 @@ export default function Education(){
             return (
               <div key={`m-${i}`} className={`timeline-marker ${side}`} style={{top: top + 'px'}}>
                 <svg className="marker-badge" viewBox="0 0 60 60" width="72" height="72" aria-hidden="true">
-                  {/* outer white border circle */}
                   <circle cx="30" cy="30" r="28" fill="#ffffff" opacity="0.9" />
-                  {/* blue background */}
                   <circle cx="30" cy="30" r="25" fill="#2196F3" />
-                  {/* icon container - render based on type */}
                   {iconType === 'school' && (
                     <image className="marker-icon" href={schoolImg} x="14" y="14" width="32" height="32" preserveAspectRatio="xMidYMid meet" aria-hidden="true" />
                   )}

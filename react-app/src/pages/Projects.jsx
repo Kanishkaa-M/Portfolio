@@ -44,7 +44,7 @@ export default function Projects() {
       description:
         "A full-stack e-commerce platform with product listings, cart management, and checkout flow. Fully responsive and visually attractive interface.",
       more: "Built using the MERN stack. Includes admin dashboard, product filters, cart sync, and backend authentication. One of the biggest projects I worked on.",
-      tech: ["React", "Node.js", "MongoDB"],
+      tech: ["React"],
       image: ecommerce,
     },
     {

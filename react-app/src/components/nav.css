@@ -1,4 +1,4 @@
-/* Navigation Styles */
+
 .topbar {
   display: flex;
   align-items: center;
@@ -59,7 +59,6 @@
   width: 100%;
 }
 
-/* Active link styling with cyan glow */
 .topbar nav a.active {
   color: #00eaff;
   text-shadow: 0 0 10px rgba(0, 234, 255, 0.8);
@@ -71,7 +70,6 @@
   box-shadow: 0 0 8px rgba(0, 234, 255, 0.6);
 }
 
-/* Responsive Design */
 @media (max-width: 700px) {
   .topbar {
     flex-direction: column;

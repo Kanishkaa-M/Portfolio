@@ -32,7 +32,6 @@ export default function Contacts() {
   return (
     <section className="contact-section">
 
-      {/* Glow Filter (Required) */}
       <svg aria-hidden="true" width="0" height="0">
         <filter id="glow-2">
           <feGaussianBlur stdDeviation="12" result="blur1" />
@@ -45,7 +44,6 @@ export default function Contacts() {
         </filter>
       </svg>
 
-      {/* Glow Wrapper */}
       <div className="glow-wrapper">
         <div className="glow-border"></div>
 

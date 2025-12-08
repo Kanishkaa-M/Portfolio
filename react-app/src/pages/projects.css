@@ -32,7 +32,7 @@
 }
 
 .project-image-box img {
-  width: 420px;      /* ★ Reduced image size */
+  width: 420px;      
   height: auto;
   border-radius: 12px;
   object-fit: cover;
@@ -45,13 +45,13 @@
 
 .featured {
   color: #64ffda;
-  font-size: 16px;   /* ★ Slightly bigger */
+  font-size: 16px;  
   margin-bottom: 6px;
 }
 
 .project-title {
   color: #fff;
-  font-size: 30px;   /* ★ Bigger font */
+  font-size: 30px;  
   margin-bottom: 15px;
 }
 
@@ -60,7 +60,7 @@
   padding: 20px;
   border-radius: 10px;
   color: #dbeafe;
-  font-size: 18px;   /* ★ Bigger text */
+  font-size: 18px;   
   line-height: 1.8;
   margin-bottom: 15px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);

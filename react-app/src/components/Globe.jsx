@@ -32,7 +32,6 @@ export default function Globe() {
         dir.position.set(5, 3, 5);
         scene.add(dir);
 
-        // Earth geometry (kept very dark/transparent so the neural network stands out)
         const geometry = new THREE.SphereGeometry(1.2, 64, 64);
         const material = new THREE.MeshStandardMaterial({
           color: 0x06121a,
@@ -44,8 +43,6 @@ export default function Globe() {
 
         const earth = new THREE.Mesh(geometry, material);
         scene.add(earth);
-
-        // Clouds are not used for the neural look; keep a very faint atmosphere if needed
         const cloudGeo = new THREE.SphereGeometry(1.21, 64, 64);
         const cloudMat = new THREE.MeshStandardMaterial({
           transparent: true,
@@ -55,9 +52,8 @@ export default function Globe() {
         const clouds = new THREE.Mesh(cloudGeo, cloudMat);
         scene.add(clouds);
 
-        // --- Neural network overlay (nodes + connecting lines) ---
+    
         const createNetwork = (count = 88, radius = 1.25, neigh = 3) => {
-          // generate evenly distributed points on sphere (Fibonacci sphere)
           const positions = [];
           for (let i = 0; i < count; i++) {
             const t = i / count;
@@ -68,8 +64,6 @@ export default function Globe() {
             const z = Math.cos(inclination);
             positions.push(new THREE.Vector3(x * radius, y * radius, z * radius));
           }
-
-          // Points (glowing nodes) - slightly larger for visibility
           const nodesGeom = new THREE.BufferGeometry().setFromPoints(positions);
           const baseNodeSize = 0.04 * radius;
           const nodesMaterial = new THREE.PointsMaterial({
@@ -84,11 +78,8 @@ export default function Globe() {
           const nodes = new THREE.Points(nodesGeom, nodesMaterial);
           scene.add(nodes);
 
-          // Lines between nearest neighbors
-          // compute k nearest neighbors (simple quadratic search)
           const segments = [];
           for (let i = 0; i < positions.length; i++) {
-            // compute distances
             const distances = [];
             for (let j = 0; j < positions.length; j++) {
               if (i === j) continue;
@@ -119,7 +110,6 @@ export default function Globe() {
 
         const network = createNetwork(108, 1.25, 3);
 
-        // Dynamically import OrbitControls to avoid bundler/import-time failures
         const oc = await import("three/examples/jsm/controls/OrbitControls");
         const OrbitControls = oc.OrbitControls;
         controls = new OrbitControls(camera, renderer.domElement);
@@ -145,18 +135,16 @@ export default function Globe() {
 
         const animate = () => {
           controls.update();
-          // slow self-rotation
+
           earth.rotation.y += 0.0012;
           clouds.rotation.y += 0.0015;
-          // subtle network motion
+
           if (network && network.lines) network.lines.rotation.y += 0.0008;
           if (network && network.nodes) network.nodes.rotation.y += 0.0009;
-
-          // pulsing nodes (global pulse) - smoother using time
           const t = performance.now() * 0.001;
           if (network && network.nodesMaterial) {
-            const pulseSpeed = 1.6; // Hz
-            const pulseScale = 0.45; // amplitude
+            const pulseSpeed = 1.6; 
+            const pulseScale = 0.45; 
             network.nodesMaterial.size = network.baseNodeSize * (1 + Math.sin(t * pulseSpeed) * pulseScale);
             network.nodesMaterial.needsUpdate = true;
           }
@@ -166,7 +154,6 @@ export default function Globe() {
 
         animate();
 
-        // cleanup function
         return () => {
           cancelAnimationFrame(frameId);
           window.removeEventListener("resize", onResize);
@@ -175,7 +162,7 @@ export default function Globe() {
           cloudGeo.dispose();
           material.dispose();
           cloudMat.dispose();
-          // dispose network geometries/materials
+          
           try {
             if (network) {
               if (network.nodes) scene.remove(network.nodes);
@@ -200,11 +187,11 @@ export default function Globe() {
     const cleanupPromise = run();
 
     return () => {
-      // If run returned a cleanup function (via promise), ensure it's called when resolved
+      
       cleanupPromise.then((cleanup) => {
         if (typeof cleanup === "function") cleanup();
       }).catch((e) => {
-        // already handled
+       
       });
     };
     

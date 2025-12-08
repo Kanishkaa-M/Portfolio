@@ -1,4 +1,4 @@
-/* --- SKILLS HEADING ---- */
+
 .skills-heading {
   text-align: center;
   font-size: 50px;
@@ -8,7 +8,6 @@
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
 }
 
-/* --- CONTAINER --- */
 .skills-container {
   display: flex;
   gap: 40px;
@@ -17,24 +16,23 @@
   padding: 60px 20px;
 }
 
-/* Make the whole skills section transparent so the background shows through */
 .skills-section {
   background: transparent;
   padding: 20px 0 60px 0;
 }
 
-/* --- OUTER GLOW BORDER --- */
+
 .tech-card {
   width: 260px;
   height: 260px;
   padding: 2px;
   border-radius: 20px;
 
-  /* Make card background transparent so page background shows through */
+ 
   background: transparent;
   border: 1px solid rgba(0,234,255,0.08);
 
-  /* Glow */
+  
   box-shadow:
     0 0 25px rgba(0, 234, 255, 0.6),
     0 0 50px rgba(0, 234, 255, 0.35);
@@ -43,17 +41,16 @@
   cursor: pointer;
 }
 
-/* --- TRANSPARENT INNER CARD (GLASS EFFECT) --- */
 .tech-card-content {
   width: 100%;
   height: 100%;
   border-radius: 18px;
 
-  background: rgba(255, 255, 255, 0.05);       /* Transparent */
-  backdrop-filter: blur(12px);                 /* Glass blur */
+  background: rgba(255, 255, 255, 0.05);       
+  backdrop-filter: blur(12px);                 
   -webkit-backdrop-filter: blur(12px);
 
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border */
+  border: 1px solid rgba(255, 255, 255, 0.15); 
 
   display: flex;
   justify-content: center;
@@ -61,22 +58,18 @@
   flex-direction: column;
 }
 
-/* --- ON HOVER --- */
 .tech-card:hover {
   transform: translateY(-6px);
   box-shadow:
     0 0 35px rgba(0, 234, 255, 1),
     0 0 70px rgba(0, 234, 255, 0.9);
 }
-
-/* --- ICON --- */
 .tech-icon {
   width: 80px;
   margin-bottom: 15px;
   filter: drop-shadow(0 0 10px rgba(0, 234, 255, 0.8));
 }
 
-/* --- TITLE --- */
 .tech-title {
   color: white;
   font-size: 20px;

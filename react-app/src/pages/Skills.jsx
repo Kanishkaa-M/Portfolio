@@ -9,9 +9,8 @@ import javaLogo from "../assets/java.png";
 import githubLogo from "../assets/github.png";
 import canvaLogo from "../assets/canva.jpeg";
 import cloudLogo from "../assets/Google cloud.png";
-import "./Skills.css"; // IMPORTANT — make sure this file name is correct
+import "./Skills.css"; 
 
-// Card Component
 function TechCard({ title, icon }) {
   return (
     <div className="tech-card">
@@ -23,14 +22,12 @@ function TechCard({ title, icon }) {
   );
 }
 
-// Main Component
+
 export default function Skills() {
   return (
     <section className="skills-section">
-      {/* Heading */}<div>
+      <div>
       <h1 className="skills-heading">Languages</h1>
-
-      {/* Card Container */}
       <div className="skills-container">
         <TechCard icon={htmlLogo} title="HTML" />
         <TechCard icon={cssLogo} title="CSS" />
@@ -43,8 +40,6 @@ export default function Skills() {
       </div>
       <div>
         <h1 className="skills-heading">Tools</h1>
-
-      {/* Card Container */}
       <div className="skills-container">
         <TechCard icon={githubLogo} title="GitHub" />
         <TechCard icon={canvaLogo} title="Canva" />

@@ -1,4 +1,4 @@
-/* src/pages/Home.jsx styles */
+
 .home {
   display: flex;
   flex-direction: column;
@@ -12,8 +12,6 @@
 .home-profile {
   margin-bottom: 20px;
 }
-
-/* Existing typing animation styles from style.css */
 .typing {
   color: #00eaff;
   text-shadow: 0 0 12px rgba(0, 234, 255, 0.6);
@@ -36,8 +34,6 @@
   50% { text-shadow: 0 0 20px rgba(0,234,255,0.95); color: #00f0ff; }
   100% { text-shadow: 0 0 6px rgba(0,234,255,0.45); color: #00eaff; }
 }
-
-/* Social icons styling */
 .social-icons {
   margin-top: 24px;
   display: flex;
@@ -67,13 +63,11 @@
   background-color: #087ea4;
 }
 
-/* Logo appears first */
 .logo {
   animation: fadeIn 1s ease-in-out;
   margin-bottom: 40px;
 }
 
-/* Delay Home content to appear after Logo */
 
 
 @keyframes fadeIn {
@@ -86,7 +80,7 @@
 .one,
 .typing,
 .social-icons {
-  animation-delay: 3s; /* Match Logo's total animation time */
+  animation-delay: 3s; 
 }
 .one {
   font-size: 4.5rem;
@@ -113,15 +107,11 @@ h2 {
 .home {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;    /* important – aligns text LEFT */
+  align-items: flex-start;    
   padding-left: 120px; 
-  justify-content: flex-start;   /* 👈 Puts content at top */
-  padding-top: 60px;       /* moves text to same left position */
-        /* proper top spacing */
+  justify-content: flex-start;   
+  padding-top: 60px;       
 }
-/* Increase = more right, Decrease = more left */
-
-/* Download button with cyan glow effect */
 .download-btn-glow {
   display: inline-block;
   margin-top: 30px;

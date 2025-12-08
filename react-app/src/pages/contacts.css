@@ -1,4 +1,4 @@
-/* MAIN CONTACT PAGE */
+
 .contact-section {
   width: 100%;
   min-height: 100vh;
@@ -22,7 +22,6 @@
   }
 }
 
-/* Globe container beside the contact box */
 .globe-wrapper {
   width: 480px;
   max-width: 40vw;
@@ -48,7 +47,6 @@
   }
 }
 
-/* CONTACT BOX */
 .contact-box {
   width: 500px;
   padding: 25px 30px;
@@ -126,7 +124,6 @@
   background: #00bcd1;
 }
 
-/* SUCCESS TOAST */
 .contact-success {
   position: fixed;
   top: 20px;
@@ -148,9 +145,6 @@
   to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
-/* =============================
-      ELECTRIC GLOW BORDER
-============================= */
 
 .glow-wrapper {
   position: relative;

@@ -11,8 +11,6 @@ import './pages/skills.css'
 import './pages/contacts.css'
 import './components/Background.css'
 
-
-// After (fixed)
 import Intro from './components/Intro.jsx'
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -26,7 +24,7 @@ function Root() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowApp(true)
-    }, 5000) // Show intro for 3 seconds
+    }, 5000) 
     return () => clearTimeout(timer)
   }, [])
 
