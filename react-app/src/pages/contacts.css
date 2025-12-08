@@ -1,11 +1,12 @@
+/* MAIN CONTACT PAGE */
 .contact-section {
   width: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* position content to the left */
-  padding: 40px 80px; /* left/right padding; left gives the box some breathing room */
-  background: transparent; /* keep page background visible; the box has its own background */
+  justify-content: 500px;
+  padding: 40px 80px;
+  background: transparent;
 }
 
 @media (max-width: 768px) {
@@ -19,14 +20,17 @@
   }
 }
 
+/* CONTACT BOX */
 .contact-box {
-  width: 380px;
+  width: 500px;
   padding: 25px 30px;
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(8px);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: #fff;
+  position: relative;
+  z-index: 5;
 }
 
 .contact-subtitle {
@@ -91,7 +95,7 @@
   background: #00bcd1;
 }
 
-
+/* SUCCESS TOAST */
 .contact-success {
   position: fixed;
   top: 20px;
@@ -111,4 +115,46 @@
 @keyframes toastIn {
   from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
   to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* =============================
+      ELECTRIC GLOW BORDER
+============================= */
+
+.glow-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.glow-border {
+  position: absolute;
+  inset: -12px;
+  border-radius: 16px;
+  padding: 10px;
+
+  background: repeating-conic-gradient(
+    from var(--a, 0deg),
+    #0000 0% 60%,
+    #1414528f 70%,
+    #5ac4ced0 100%
+  );
+
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+
+  animation: spinGlow 2.5s linear infinite;
+  filter: url(#glow-2);
+}
+
+@property --a {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spinGlow {
+  to { --a: 1turn; }
 }
