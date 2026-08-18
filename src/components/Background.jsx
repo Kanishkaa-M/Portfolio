@@ -9,17 +9,17 @@ export default function NetworkBackground() {
     const ctx = c.getContext("2d");
 
     const options = {
-      num: 50,
+      num: 80,
       particle: {
-        color: "rgba(252, 252, 252, 0.6)",
-        szMin: 0.5,
-        szMax: 1,
-        spMin: 0.05,
-        spMax: 0.5,
+        color: "rgba(142, 214, 255, 0.8)",
+        szMin: 0.7,
+        szMax: 1.5,
+        spMin: 0.06,
+        spMax: 0.6,
       },
       link: {
-        color: "rgba(237, 241, 237, 0.3)",
-        maxDist: 160,
+        color: "rgba(96, 165, 250, 0.28)",
+        maxDist: 170,
       },
     };
 
@@ -71,7 +71,10 @@ export default function NetworkBackground() {
         ctx.beginPath();
         ctx.arc(this.p.x, this.p.y, this.r, 0, pi2);
         ctx.fillStyle = options.particle.color;
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = "rgba(96, 165, 250, 0.7)";
         ctx.fill();
+        ctx.shadowBlur = 0;
       }
       drawLink(other) {
         ctx.save();
@@ -82,6 +85,8 @@ export default function NetworkBackground() {
         ctx.lineWidth = this.r;
         ctx.lineTo(other.p.x, other.p.y);
         ctx.strokeStyle = options.link.color;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = "rgba(96, 165, 250, 0.5)";
         ctx.stroke();
         ctx.restore();
       }
@@ -138,32 +143,13 @@ export default function NetworkBackground() {
 
   return (
     <>
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-          backgroundImage: "url('/background.jpeg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-          zIndex: -1,
-          pointerEvents: 'none',
-        }}
-      />
+      <div className="background-overlay" />
       <canvas
         ref={canvasRef}
+        className="background-canvas-container"
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
           display: "block",
-          zIndex: 0,
-          pointerEvents: 'none',
+          zIndex: -1,
           touchAction: 'none'
         }}
       />

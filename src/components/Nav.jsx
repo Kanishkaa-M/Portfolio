@@ -1,21 +1,71 @@
-import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+
+const navItems = [
+  { label: 'Home', section: 'home', href: '#home' },
+  { label: 'About', section: 'about', href: '#about' },
+  { label: 'Education', section: 'education', href: '#education' },
+  { label: 'Projects', section: 'projects', href: '#projects' },
+  { label: 'Skills', section: 'skills', href: '#skills' },
+  { label: 'Contact', section: 'contacts', href: '#contacts' }
+]
 
 export default function Nav(){
-  const location = useLocation()
+  const [isOpen, setIsOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
 
-  const isActive = (path) => location.pathname === path
+  useEffect(() => {
+    const sections = navItems
+      .map(item => document.getElementById(item.section))
+      .filter(Boolean)
+
+    if (!sections.length) return
+
+    const observer = new IntersectionObserver((entries) => {
+      const visibleEntry = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+
+      if (visibleEntry) {
+        setActiveSection(visibleEntry.target.id)
+      }
+    }, {
+      threshold: [0.2, 0.4, 0.7],
+      rootMargin: '-20% 0px -35% 0px'
+    })
+
+    sections.forEach(section => observer.observe(section))
+
+    return () => observer.disconnect()
+  }, [])
+
+  const handleLinkClick = (section) => {
+    setIsOpen(false)
+    setActiveSection(section)
+  }
 
   return (
     <header className="topbar">
       <div className="brand">KANISHKAA</div>
-      <nav>
-        <Link to="/" className={isActive('/') ? 'nav-link active' : 'nav-link'}>Home</Link>
-        <Link to="/about" className={isActive('/about') ? 'nav-link active' : 'nav-link'}>About</Link>
-        <Link to="/education" className={isActive('/education') ? 'nav-link active' : 'nav-link'}>Education</Link>
-        <Link to="/projects" className={isActive('/projects') ? 'nav-link active' : 'nav-link'}>Projects</Link>
-        <Link to="/skills" className={isActive('/skills') ? 'nav-link active' : 'nav-link'}>Skills</Link>
-        <Link to="/contacts" className={isActive('/contacts') ? 'nav-link active' : 'nav-link'}>Contact</Link>
+      <button 
+        className={`nav-toggle ${isOpen ? 'open' : ''}`} 
+        onClick={() => setIsOpen(!isOpen)} 
+        aria-label="Toggle Navigation"
+      >
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+      </button>
+      <nav className={isOpen ? 'nav-menu open' : 'nav-menu'}>
+        {navItems.map((item) => (
+          <a
+            key={item.section}
+            href={item.href}
+            className={activeSection === item.section ? 'nav-link active' : 'nav-link'}
+            onClick={() => handleLinkClick(item.section)}
+          >
+            {item.label}
+          </a>
+        ))}
       </nav>
     </header>
   )

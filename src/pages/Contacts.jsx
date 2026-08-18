@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./contacts.css";
-import Globe from "../components/Globe";
 
 export default function Contacts() {
   const [formData, setFormData] = useState({
@@ -30,71 +29,135 @@ export default function Contacts() {
   };
 
   return (
-    <section className="contact-section">
+    <section id="contacts" className="contact-page-container container">
+      <h2 className="contact-page-title">Get In Touch</h2>
+      
+      <div className="contact-split-grid">
+        {/* Left Side: Contact Form */}
+        <div className="glass-card contact-form-card">
+          <span className="contact-meta-label">Send a Message</span>
+          <h3 className="contact-block-heading">Drop me a line</h3>
+          
+          <form className="contact-form-element" onSubmit={sendEmail}>
+            <div className="form-group">
+              <label htmlFor="form-name">Your Name</label>
+              <input
+                id="form-name"
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-      <svg aria-hidden="true" width="0" height="0">
-        <filter id="glow-2">
-          <feGaussianBlur stdDeviation="12" result="blur1" />
-          <feGaussianBlur stdDeviation="24" result="blur2" />
-          <feBlend in="blur1" in2="blur2" mode="lighten" result="glow" />
-          <feMerge>
-            <feMergeNode in="glow" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </svg>
+            <div className="form-group">
+              <label htmlFor="form-email">Your Email</label>
+              <input
+                id="form-email"
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-      <div className="glow-wrapper">
-        <div className="glow-border"></div>
+            <div className="form-group">
+              <label htmlFor="form-message">Your Message</label>
+              <textarea
+                id="form-message"
+                name="message"
+                rows="5"
+                placeholder="What would you like to say?"
+                value={formData.message}
+                onChange={handleChange}
+                required
+              ></textarea>
+            </div>
 
-        <div className="contact-box">
-          <h3 className="contact-subtitle">GET IN TOUCH</h3>
-          <h1 className="contact-title">
-            Contact
-          </h1>
-
-          <form className="contact-form" onSubmit={sendEmail}>
-            <label>Your Name</label>
-            <input
-              type="text"
-              name="name"
-              placeholder="What's your name?"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-
-            <label>Your Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="What's your email?"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-
-            <label>Your Message</label>
-            <textarea
-              name="message"
-              rows="5"
-              placeholder="What do you want to say?"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            ></textarea>
-
-            <button type="submit" className="send-btn">Send</button>
+            <button type="submit" className="contact-submit-btn">
+              Send Message <i className="fas fa-paper-plane icon-right"></i>
+            </button>
           </form>
+        </div>
+
+        {/* Right Side: Contact Info Board */}
+        <div className="glass-card contact-info-card">
+          <span className="contact-meta-label">Connect Channels</span>
+          <h3 className="contact-block-heading">Contact Information</h3>
+          <p className="contact-info-desc">
+            Feel free to reach out for internship inquiries, project collaborations, or just to say hello. I'll get back to you as soon as possible!
+          </p>
+
+          <div className="contact-details-list">
+            <a href="mailto:kanishkaamaheshkumar@gmail.com" className="info-item-link">
+              <div className="info-icon-box">
+                <i className="fas fa-envelope"></i>
+              </div>
+              <div className="info-item-content">
+                <span className="info-label">Email Me</span>
+                <span className="info-value">kanishkaamaheshkumar@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="tel:+919788086531" className="info-item-link">
+              <div className="info-icon-box">
+                <i className="fas fa-phone-alt"></i>
+              </div>
+              <div className="info-item-content">
+                <span className="info-label">Call / WhatsApp</span>
+                <span className="info-value">+91 97880 86531</span>
+              </div>
+            </a>
+
+            <div className="info-item-link static">
+              <div className="info-icon-box">
+                <i className="fas fa-map-marker-alt"></i>
+              </div>
+              <div className="info-item-content">
+                <span className="info-label">Location</span>
+                <span className="info-value">Namakkal, Tamil Nadu, India</span>
+              </div>
+            </div>
+
+            <div className="info-item-link static">
+              <div className="info-icon-box">
+                <i className="fas fa-briefcase"></i>
+              </div>
+              <div className="info-item-content">
+                <span className="info-label">Availability</span>
+                <span className="info-value">Open for AI-ML & Software Roles</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="contact-social-connect">
+            <h4>Or find me on</h4>
+            <div className="social-connect-links">
+              <a href="https://www.linkedin.com/in/kanishkaa-maheshkumar-874927327" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="social-circle-btn">
+                <i className="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/Kanishkaa-M" target="_blank" rel="noreferrer" aria-label="GitHub" className="social-circle-btn">
+                <i className="fab fa-github"></i>
+              </a>
+              <a href="https://wa.me/919788086531" target="_blank" rel="noreferrer" aria-label="WhatsApp" className="social-circle-btn">
+                <i className="fab fa-whatsapp"></i>
+              </a>
+              <a href="https://instagram.com/kanishkaamaheshkumar" target="_blank" rel="noreferrer" aria-label="Instagram" className="social-circle-btn">
+                <i className="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="globe-wrapper">
-        <Globe />
-      </div>
-
       {showSuccess && (
-        <div className="contact-success">Message Sent Successfully!</div>
+        <div className="contact-toast-success">
+          <i className="fas fa-check-circle"></i> Message Sent Successfully!
+        </div>
       )}
     </section>
   );

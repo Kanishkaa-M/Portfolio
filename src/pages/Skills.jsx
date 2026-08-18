@@ -13,41 +13,64 @@ import "./Skills.css";
 
 function TechCard({ title, icon }) {
   return (
-    <div className="tech-card">
-      <div className="tech-card-content">
-        <img src={icon} alt={title} className="tech-icon" />
-        <h3 className="tech-title">{title}</h3>
+    <div className="tech-card-wrapper">
+      <div className="glass-card tech-card">
+        <div className="tech-card-inner">
+          <img src={icon} alt={title} className="tech-card-icon" />
+          <h3 className="tech-card-title">{title}</h3>
+        </div>
       </div>
     </div>
   );
 }
 
-
 export default function Skills() {
+  const skillCategories = [
+    {
+      name: "Frontend & Design",
+      items: [
+        { title: "HTML", icon: htmlLogo },
+        { title: "CSS", icon: cssLogo },
+        { title: "JavaScript", icon: jsLogo },
+        { title: "ReactJS", icon: reactLogo },
+        { title: "Canva", icon: canvaLogo }
+      ]
+    },
+    {
+      name: "Backend & Cloud",
+      items: [
+        { title: "Google Cloud", icon: cloudLogo }
+      ]
+    },
+    {
+      name: "Programming Languages & Tools",
+      items: [
+        { title: "C", icon: cLogo },
+        { title: "Python", icon: pythonLogo },
+        { title: "Java", icon: javaLogo },
+        { title: "GitHub", icon: githubLogo }
+      ]
+    }
+  ];
+
   return (
-    <section className="skills-section">
-      <div>
-      <h1 className="skills-heading">Languages</h1>
-      <div className="skills-container">
-        <TechCard icon={htmlLogo} title="HTML" />
-        <TechCard icon={cssLogo} title="CSS" />
-        <TechCard icon={jsLogo} title="JavaScript" />
-        <TechCard icon={reactLogo} title="ReactJS" />
-        <TechCard icon={cLogo} title="C" />
-        <TechCard icon={pythonLogo} title="Python" />
-        <TechCard icon={javaLogo} title="Java" />
-      </div>
-      </div>
-      <div>
-        <h1 className="skills-heading">Tools</h1>
-      <div className="skills-container">
-        <TechCard icon={githubLogo} title="GitHub" />
-        <TechCard icon={canvaLogo} title="Canva" />
-        <TechCard icon={cloudLogo} title="Google Cloud" />
-      </div>
+    <section id="skills" className="skills-page-container container">
+      <h2 className="skills-page-title">Technical Skills</h2>
+      
+      <div className="skills-categories-wrapper">
+        {skillCategories.map((category, catIdx) => (
+          <div className="skills-category-block" key={catIdx}>
+            <h3 className="skills-category-heading">
+              <span className="heading-dot"></span> {category.name}
+            </h3>
+            <div className="skills-cards-grid">
+              {category.items.map((skill, itemIdx) => (
+                <TechCard key={itemIdx} title={skill.title} icon={skill.icon} />
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
 }
-
-
