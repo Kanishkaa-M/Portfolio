@@ -1,22 +1,38 @@
-/* Background styling container */
-.background-canvas-container {
+.night-sky {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -2;
+  z-index: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 100%, #272762, #000000 75%);
   pointer-events: none;
-  background-color: #020b1d;
 }
 
-.background-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: radial-gradient(circle at top, rgba(18, 39, 80, 0.8) 0%, rgba(2, 11, 29, 0.94) 35%, rgba(2, 11, 29, 1) 100%);
-  z-index: -1;
-  pointer-events: none;
+.night-sky::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  box-shadow:
+    5vw 10vh white, 12vw 20vh rgba(255, 255, 255, .5),
+    20vw 8vh white, 28vw 25vh rgba(255, 255, 255, .6),
+    35vw 12vh white, 43vw 30vh rgba(255, 255, 255, .4),
+    50vw 8vh white, 58vw 22vh rgba(255, 255, 255, .6),
+    65vw 15vh white, 73vw 28vh rgba(255, 255, 255, .5),
+    82vw 10vh white, 90vw 23vh rgba(255, 255, 255, .6),
+    96vw 8vh white, 8vw 45vh rgba(255, 255, 255, .5),
+    18vw 55vh white, 27vw 42vh rgba(255, 255, 255, .4),
+    36vw 65vh white, 45vw 50vh rgba(255, 255, 255, .6),
+    54vw 70vh white, 63vw 48vh rgba(255, 255, 255, .5),
+    72vw 62vh white, 81vw 45vh rgba(255, 255, 255, .6),
+    91vw 68vh white;
+  animation: twinkle 5s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .3; }
+  to { opacity: 1; }
 }

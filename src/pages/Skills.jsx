@@ -1,5 +1,26 @@
 import React, { useState } from "react";
 import "./Skills.css";
+import { FaJava } from "react-icons/fa";
+import { DiMsqlServer } from "react-icons/di";
+import { VscVscode } from "react-icons/vsc";
+import {
+  SiExpress,
+  SiGit,
+  SiGithub,
+  SiHtml5,
+  SiJavascript,
+  SiMongodb,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPostman,
+  SiReact,
+  SiSupabase,
+  SiVercel,
+  SiVite,
+  SiSwagger,
+  SiNextdotjs,
+  SiCss,
+} from "react-icons/si";
 
 // Customized sharp inline SVG paths for high-quality developer logos
 const SKILL_ICONS = {
@@ -101,6 +122,28 @@ const SKILL_ICONS = {
   )
 };
 
+const BRAND_ICONS = {
+  java: <FaJava className="skill-svg-icon" />,
+  javascript: <SiJavascript className="skill-svg-icon" />,
+  sql: <DiMsqlServer className="skill-svg-icon" />,
+  html: <SiHtml5 className="skill-svg-icon" />,
+  css: <SiCss className="skill-svg-icon" />,
+  react: <SiReact className="skill-svg-icon" />,
+  nextjs: <SiNextdotjs className="skill-svg-icon" />,
+  vite: <SiVite className="skill-svg-icon" />,
+  node: <SiNodedotjs className="skill-svg-icon" />,
+  express: <SiExpress className="skill-svg-icon" />,
+  mongodb: <SiMongodb className="skill-svg-icon" />,
+  postgresql: <SiPostgresql className="skill-svg-icon" />,
+  supabase: <SiSupabase className="skill-svg-icon" />,
+  git: <SiGit className="skill-svg-icon" />,
+  github: <SiGithub className="skill-svg-icon" />,
+  postman: <SiPostman className="skill-svg-icon" />,
+  vscode: <VscVscode className="skill-svg-icon" />,
+  restapi: <SiSwagger className="skill-svg-icon" />,
+  vercel: <SiVercel className="skill-svg-icon" />
+};
+
 export default function Skills() {
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -115,29 +158,29 @@ export default function Skills() {
 
   const allSkills = [
     // Languages
-    { title: "Java", category: "Languages", icon: SKILL_ICONS.java },
-    { title: "JavaScript", category: "Languages", icon: SKILL_ICONS.javascript },
-    { title: "SQL", category: "Languages", icon: SKILL_ICONS.sql },
+    { title: "Java", category: "Languages", icon: BRAND_ICONS.java },
+    { title: "JavaScript", category: "Languages", icon: BRAND_ICONS.javascript },
+    { title: "SQL", category: "Languages", icon: BRAND_ICONS.sql },
     // Frontend
-    { title: "HTML5", category: "Frontend", icon: SKILL_ICONS.html },
-    { title: "CSS3", category: "Frontend", icon: SKILL_ICONS.css },
-    { title: "React", category: "Frontend", icon: SKILL_ICONS.react },
-    { title: "Next.js", category: "Frontend", icon: SKILL_ICONS.nextjs },
-    { title: "Vite", category: "Frontend", icon: SKILL_ICONS.vite },
+    { title: "HTML5", category: "Frontend", icon: BRAND_ICONS.html },
+    { title: "CSS3", category: "Frontend", icon: BRAND_ICONS.css },
+    { title: "React", category: "Frontend", icon: BRAND_ICONS.react },
+    { title: "Next.js", category: "Frontend", icon: BRAND_ICONS.nextjs },
+    { title: "Vite", category: "Frontend", icon: BRAND_ICONS.vite },
     // Backend
-    { title: "Node.js", category: "Backend", icon: SKILL_ICONS.node },
-    { title: "Express.js", category: "Backend", icon: SKILL_ICONS.express },
-    { title: "REST APIs", category: "Backend", icon: SKILL_ICONS.restapi },
+    { title: "Node.js", category: "Backend", icon: BRAND_ICONS.node },
+    { title: "Express.js", category: "Backend", icon: BRAND_ICONS.express },
+    { title: "REST APIs", category: "Backend", icon: BRAND_ICONS.restapi },
     // Databases
-    { title: "MongoDB", category: "Databases", icon: SKILL_ICONS.mongodb },
-    { title: "PostgreSQL", category: "Databases", icon: SKILL_ICONS.postgresql },
-    { title: "Supabase", category: "Databases", icon: SKILL_ICONS.supabase },
+    { title: "MongoDB", category: "Databases", icon: BRAND_ICONS.mongodb },
+    { title: "PostgreSQL", category: "Databases", icon: BRAND_ICONS.postgresql },
+    { title: "Supabase", category: "Databases", icon: BRAND_ICONS.supabase },
     // Tools
-    { title: "Git", category: "Tools", icon: SKILL_ICONS.git },
-    { title: "GitHub", category: "Tools", icon: SKILL_ICONS.github },
-    { title: "Postman", category: "Tools", icon: SKILL_ICONS.postman },
-    { title: "VS Code", category: "Tools", icon: SKILL_ICONS.vscode },
-    { title: "Vercel", category: "Tools", icon: SKILL_ICONS.vercel }
+    { title: "Git", category: "Tools", icon: BRAND_ICONS.git },
+    { title: "GitHub", category: "Tools", icon: BRAND_ICONS.github },
+    { title: "Postman", category: "Tools", icon: BRAND_ICONS.postman },
+    { title: "VS Code", category: "Tools", icon: BRAND_ICONS.vscode },
+    { title: "Vercel", category: "Tools", icon: BRAND_ICONS.vercel }
   ];
 
   const filteredSkills = activeFilter === "All"
@@ -172,7 +215,9 @@ export default function Skills() {
           <div className="skills-card-glow-box" key={idx}>
             <div className="glass-card skill-icon-card">
               <div className="skill-card-content">
-                <div className="skill-icon-holder">{skill.icon}</div>
+                <div className={`skill-icon-holder skill-icon-${skill.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
+                  {skill.icon}
+                </div>
                 <span className="skill-card-title-text">{skill.title}</span>
               </div>
             </div>

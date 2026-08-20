@@ -5,10 +5,12 @@ import Projects from './pages/Projects'
 import Skills from './pages/Skills'
 import Contacts from './pages/Contacts'
 import Nav from './components/Nav'
+import NetworkBackground from './components/Background'
 
 export default function App(){
   return (
-    <div>
+    <div className="app-shell">
+      <NetworkBackground />
       <Nav />
       <main className="page-shell">
         <Home />

@@ -65,6 +65,12 @@ img, picture, video, svg {
   display: block;
 }
 
+.app-shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
 /* Layout Utilities */
 .container {
   max-width: 1200px;
