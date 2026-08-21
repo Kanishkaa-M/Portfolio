@@ -22,6 +22,8 @@
   margin-bottom: 32px;
   font-family: var(--font-title);
   letter-spacing: -0.02em;
+  position: relative;
+  z-index: 1;
 }
 
 /* Bio Full Card */
@@ -60,6 +62,18 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  position: relative;
+  z-index: 1;
+  min-height: 32px;
+}
+
+.section-subtitle::after {
+  content: '';
+  width: 52px;
+  height: 2px;
+  margin-left: 4px;
+  background: var(--color-green);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.55);
 }
 
 .icon-left {
@@ -188,6 +202,67 @@
   object-fit: contain;
 }
 
+.github-commit-history {
+  padding: 22px 24px;
+}
+
+.commit-history-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.commit-history-heading h4 {
+  color: #fff;
+  font-size: 1.05rem;
+}
+
+.commit-history-heading a {
+  color: var(--color-green);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.commit-history-item {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.commit-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-green);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.7);
+}
+
+.commit-message {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.commit-repo,
+.commit-history-item time {
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.github-empty-state {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
 /* Responsive Styles */
 @media (max-width: 900px) {
   .internship-cards-grid {
@@ -204,5 +279,11 @@
   }
   .section-subtitle {
     font-size: 1.3rem;
+  }
+  .commit-history-item {
+    grid-template-columns: 10px minmax(0, 1fr) auto;
+  }
+  .commit-history-item time {
+    display: none;
   }
 }

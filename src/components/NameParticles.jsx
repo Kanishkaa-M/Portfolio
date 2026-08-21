@@ -22,8 +22,9 @@ export default function NameParticles({ name = "KANISHKAA" }) {
 
     class Particle {
       constructor(x, y) {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        // Start close to the glyph so the name resolves within the intro window.
+        this.x = x + (Math.random() - 0.5) * 140;
+        this.y = y + (Math.random() - 0.5) * 140;
         this.baseX = x;
         this.baseY = y;
         this.vx = 0;
@@ -63,13 +64,13 @@ export default function NameParticles({ name = "KANISHKAA" }) {
           // Return to home position
           const dxBase = this.baseX - this.x;
           const dyBase = this.baseY - this.y;
-          this.vx += dxBase * 0.07;
-          this.vy += dyBase * 0.07;
+          this.vx += dxBase * 0.16;
+          this.vy += dyBase * 0.16;
         }
 
         // Friction / air resistance
-        this.vx *= 0.88;
-        this.vy *= 0.88;
+        this.vx *= 0.78;
+        this.vy *= 0.78;
 
         this.x += this.vx;
         this.y += this.vy;

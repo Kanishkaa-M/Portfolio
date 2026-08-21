@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 
 export default function About(){
+  const [recentCommits, setRecentCommits] = useState([])
   const internships = [
     {
       role: "Java Full Stack Virtual Intern",
@@ -40,6 +41,24 @@ export default function About(){
       ]
     }
   ]
+
+  useEffect(() => {
+    fetch('https://api.github.com/users/Kanishkaa-M/events/public?per_page=30')
+      .then((response) => response.ok ? response.json() : [])
+      .then((events) => {
+        const commits = events
+          .filter((event) => event.type === 'PushEvent' && event.payload?.commits?.length)
+          .flatMap((event) => event.payload.commits.map((commit) => ({
+            message: commit.message.split('\n')[0],
+            repo: event.repo.name,
+            date: event.created_at,
+            url: `https://github.com/${event.repo.name}/commit/${commit.sha}`
+          })))
+          .slice(0, 6)
+        setRecentCommits(commits)
+      })
+      .catch(() => setRecentCommits([]))
+  }, [])
 
   return (
     <div id="about" className="about-page container">
@@ -97,7 +116,7 @@ export default function About(){
             {/* Live SVG GitHub contribution calendar graph */}
             <div className="glass-card github-calendar-card">
               <img 
-                src="https://ghchart.oswald.dev/Kanishkaa-M?theme=dark" 
+                src="https://github-readme-activity-graph.vercel.app/graph?username=Kanishkaa-M&theme=tokyo-night&hide_border=true&area=true" 
                 alt="Kanishkaa M's GitHub Contribution Grid" 
                 className="github-calendar-img"
                 loading="lazy"
@@ -116,12 +135,29 @@ export default function About(){
               </div>
               <div className="glass-card github-stat-badge-card">
                 <img 
-                  src="https://github-readme-streak-stats.herokuapp.com/?user=Kanishkaa-M&theme=tokyonight" 
+                  src="https://streak-stats.demolab.com/?user=Kanishkaa-M&theme=tokyonight" 
                   alt="Kanishkaa M's Coding Streak" 
                   className="github-stat-badge-img"
                   loading="lazy"
                 />
               </div>
+            </div>
+
+            <div className="github-commit-history glass-card">
+              <div className="commit-history-heading">
+                <h4>Recent Commit History</h4>
+                <a href="https://github.com/Kanishkaa-M" target="_blank" rel="noreferrer">View GitHub</a>
+              </div>
+              {recentCommits.length > 0 ? recentCommits.map((commit, index) => (
+                <a className="commit-history-item" href={commit.url} target="_blank" rel="noreferrer" key={`${commit.url}-${index}`}>
+                  <span className="commit-dot" />
+                  <span className="commit-message">{commit.message}</span>
+                  <span className="commit-repo">{commit.repo.split('/')[1]}</span>
+                  <time dateTime={commit.date}>{new Date(commit.date).toLocaleDateString()}</time>
+                </a>
+              )) : (
+                <p className="github-empty-state">Recent public commits will appear here.</p>
+              )}
             </div>
           </div>
         </div>
