@@ -35,8 +35,12 @@ export default function Contacts() {
       <div className="contact-split-grid">
         {/* Left Side: Contact Form */}
         <div className="glass-card contact-form-card">
-          <span className="contact-meta-label">Send a Message</span>
+          <span className="contact-meta-label contact-title">Contact</span>
           <h3 className="contact-block-heading">Drop me a line</h3>
+          <div className="contact-form-intro">
+            <p>Have an idea, opportunity, or project in mind?</p>
+            <span>Let&apos;s create something useful together.</span>
+          </div>
           
           <form className="contact-form-element" onSubmit={sendEmail}>
             <div className="form-group">
