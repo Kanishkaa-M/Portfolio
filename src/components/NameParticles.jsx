@@ -30,8 +30,7 @@ export default function NameParticles({ name = "KANISHKAA" }) {
         this.vx = 0;
         this.vy = 0;
         this.size = 2;
-        // Vibrant neon green/teal glow palette matching the screenshots
-        this.color = "rgba(16, 185, 129, 0.85)";
+        this.color = "rgba(0, 234, 255, 0.85)";
       }
 
       draw() {
@@ -39,7 +38,7 @@ export default function NameParticles({ name = "KANISHKAA" }) {
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
         ctx.shadowBlur = 4;
-        ctx.shadowColor = "rgba(16, 185, 129, 0.6)";
+        ctx.shadowColor = "rgba(0, 234, 255, 0.6)";
         ctx.fill();
         ctx.shadowBlur = 0;
       }

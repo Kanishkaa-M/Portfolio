@@ -5,7 +5,7 @@
   --bg-card-hover: rgba(23, 33, 61, 0.85);
   --color-teal: #00eaff;
   --color-purple: #a855f7;
-  --color-green: #10b981;
+  --color-green: var(--color-teal);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
