@@ -1,6 +1,6 @@
 .skills-page-container {
   padding-top: 38px;
-  padding-bottom: 80px;
+  padding-bottom: 800px;
 }
 
 /* Centered Title */
@@ -18,8 +18,8 @@
 }
 
 .subtitle-glow {
-  color: var(--color-purple);
-  text-shadow: 0 0 25px rgba(168, 85, 247, 0.45);
+  color: var(--color-teal);
+  text-shadow: 0 0 25px rgba(0, 234, 255, 0.45);
 }
 
 /* Interactive Tabs */
@@ -50,15 +50,15 @@
 
 .skill-tab-btn:hover {
   color: #fff;
-  border-color: rgba(168, 85, 247, 0.4);
-  background: rgba(168, 85, 247, 0.05);
+  border-color: rgba(0, 234, 255, 0.4);
+  background: rgba(0, 234, 255, 0.05);
 }
 
 .skill-tab-btn.active {
   color: #fff;
-  background: #9b45ef;
-  border-color: var(--color-purple);
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  background: var(--color-teal);
+  border-color: var(--color-teal);
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.4);
 }
 
 /* Skills Grid */
@@ -84,7 +84,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  border: 1px solid #9343df;
+  border: 1px solid var(--color-teal);
   border-radius: 16px;
   cursor: pointer;
   transition: var(--transition-smooth);
@@ -139,14 +139,14 @@
 
 /* Hover State */
 .skills-card-glow-box:hover .skill-icon-card {
-  border-color: var(--color-purple);
+  border-color: var(--color-teal);
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(168, 85, 247, 0.22);
+  box-shadow: 0 12px 30px rgba(0, 234, 255, 0.22);
 }
 
 .skills-card-glow-box:hover .skill-icon-holder {
-  color: var(--color-purple);
-  filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.6));
+  color: var(--color-teal);
+  filter: drop-shadow(0 0 8px rgba(0, 234, 255, 0.6));
   transform: scale(1.1);
 }
 
