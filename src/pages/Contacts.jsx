@@ -9,12 +9,13 @@ export default function Contacts() {
   });
 
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
@@ -22,10 +23,41 @@ export default function Contacts() {
       return;
     }
 
-    setShowSuccess(true);
-    setFormData({ name: "", email: "", message: "" });
+    setIsSending(true);
 
-    setTimeout(() => setShowSuccess(false), 3000);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/kanishkaamaheshkumar@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `Portfolio contact from ${formData.name}`,
+          _captcha: "false",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Email request failed");
+      }
+
+      setShowSuccess(true);
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setShowSuccess(false), 3000);
+    } catch (error) {
+      console.error("Email send failed:", error);
+      window.location.href = `mailto:kanishkaamaheshkumar@gmail.com?subject=${encodeURIComponent(
+        `Portfolio contact from ${formData.name}`
+      )}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -82,8 +114,8 @@ export default function Contacts() {
               ></textarea>
             </div>
 
-            <button type="submit" className="contact-submit-btn">
-              Send Message <i className="fas fa-paper-plane icon-right"></i>
+            <button type="submit" className="contact-submit-btn" disabled={isSending}>
+              {isSending ? "Sending..." : "Send Message"} <i className="fas fa-paper-plane icon-right"></i>
             </button>
           </form>
         </div>

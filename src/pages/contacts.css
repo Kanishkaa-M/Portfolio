@@ -149,6 +149,12 @@
   box-shadow: 0 15px 30px -5px rgba(0, 234, 255, 0.45);
 }
 
+.contact-submit-btn:disabled {
+  opacity: 0.8;
+  cursor: wait;
+  transform: none;
+}
+
 .icon-right {
   margin-left: 8px;
 }
