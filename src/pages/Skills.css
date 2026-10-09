@@ -105,7 +105,13 @@
 
 .skill-icon-java { color: #ed8b00; }
 .skill-icon-javascript { color: #f7df1e; }
-.skill-icon-sql { color: #4479a1; }
+.skill-icon-sql { color: #35d9f1; }
+.skill-sql-logo {
+  width: 64px;
+  height: 64px;
+  display: block;
+  filter: drop-shadow(0 0 15px rgba(53, 217, 241, 0.45));
+}
 .skill-icon-html5 { color: #e34f26; }
 .skill-icon-css3 { color: #1572b6; }
 .skill-icon-react { color: #61dafb; }
@@ -122,6 +128,22 @@
 .skill-icon-postman { color: #ff6c37; }
 .skill-icon-vs-code { color: #007acc; }
 .skill-icon-vercel { color: #ffffff; }
+
+.skill-brand-logo {
+  width: 54px;
+  height: 54px;
+  display: block;
+  transition: var(--transition-smooth);
+}
+
+.skill-express-logo {
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.18));
+}
+
+.skill-api-logo {
+  color: #ffffff;
+  stroke: currentColor;
+}
 
 .skill-svg-icon {
   width: 40px;

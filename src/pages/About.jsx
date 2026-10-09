@@ -86,22 +86,6 @@ export default function About(){
           </div>
         </div>
 
-        {/* GitHub Days I Code Section */}
-        <div className="about-section-block github-activity-block">
-          <h3 className="section-subtitle">
-            <i className="fab fa-github icon-left text-highlight-green"></i> GitHub Activity
-          </h3>
-          <div className="github-widgets-wrapper">
-            <div className="glass-card github-calendar-card">
-              <img
-                src="https://github.com/users/Kanishkaa-M/contributions"
-                alt="Kanishkaa M's GitHub contribution grid"
-                className="github-calendar-img"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   )

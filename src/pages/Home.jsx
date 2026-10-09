@@ -25,7 +25,7 @@ export default function Home(){
           </p>
 
           <div className="hero-action-buttons">
-            <a href="#contacts" className="btn-hire-me">
+            <a href="/Kanishkaa_Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-hire-me">
               Hire me <i className="fas fa-arrow-right arrow-icon"></i>
             </a>
             <a href="#projects" className="btn-view-work">

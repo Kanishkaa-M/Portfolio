@@ -263,6 +263,284 @@
   font-size: 0.9rem;
 }
 
+/* GitHub Calendar Dynamic Component Styles */
+.github-calendar-container {
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.github-calendar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 16px;
+}
+
+.github-user-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.github-badge-icon {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.github-badge-username {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  display: block;
+}
+
+.github-badge-sub {
+  font-size: 0.8rem;
+  color: var(--color-green);
+  display: block;
+}
+
+.github-total-count {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.total-number {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-green);
+  font-family: var(--font-title);
+}
+
+.total-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.github-grid-scroll-area {
+  overflow-x: auto;
+  padding: 10px 0;
+  width: 100%;
+  scrollbar-width: thin;
+}
+
+.github-calendar-svg-wrapper {
+  display: flex;
+  justify-content: center;
+  min-width: 700px;
+}
+
+.github-cell {
+  transition: transform 0.15s ease, stroke 0.15s ease;
+  cursor: pointer;
+}
+
+.github-cell:hover {
+  stroke: #ffffff;
+  stroke-width: 1.5px;
+  transform: scale(1.15);
+  transform-origin: center;
+}
+
+.github-tooltip {
+  background: #1f293d;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+.github-loading-state,
+.github-fallback-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.loading-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(16, 185, 129, 0.2);
+  border-top-color: var(--color-green);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.github-calendar-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 14px;
+}
+
+.github-profile-link {
+  font-size: 0.85rem;
+  color: var(--color-green);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-smooth);
+}
+
+.github-profile-link:hover {
+  text-decoration: underline;
+  transform: translateX(3px);
+}
+
+.github-legend {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.legend-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* Year Filter Tabs */
+.github-period-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.period-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.period-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.period-btn.active {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: var(--color-green);
+  color: var(--color-green);
+  font-weight: 700;
+}
+
+/* Recent Commits Feed */
+.github-recent-activity-feed {
+  margin-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recent-activity-title {
+  font-size: 0.95rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.recent-commits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.recent-commit-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 12px 14px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: var(--transition-smooth);
+}
+
+.recent-commit-item:hover {
+  background: rgba(16, 185, 129, 0.05);
+  border-color: rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
+}
+
+.commit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.commit-repo-badge {
+  font-size: 0.78rem;
+  color: var(--color-green);
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.commit-date-text {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.commit-msg-text {
+  font-size: 0.82rem;
+  color: var(--text-main);
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.commit-sha-tag {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  font-family: monospace;
+}
+
+@media (max-width: 768px) {
+  .recent-commits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Responsive Styles */
 @media (max-width: 900px) {
   .internship-cards-grid {
