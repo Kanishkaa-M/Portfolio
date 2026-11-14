@@ -1,6 +1,6 @@
-.skills-page-container {
-  padding-top: 38px;
-  padding-bottom: 800px;
+.skills-page-container.container {
+  padding-top: 50px;
+  padding-bottom: 0;
 }
 
 /* Centered Title */
@@ -179,8 +179,8 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .skills-page-container {
-    padding-top: 28px;
+  .skills-page-container.container {
+    padding-top: 50px;
   }
 
   .skills-core-title {
