@@ -19,6 +19,9 @@ export default function App(){
         <Skills />
         <Contacts />
       </main>
+      <footer className="site-footer">
+        <p>© 2026 Kanishkaa.</p>
+      </footer>
     </div>
   )
 }

@@ -71,6 +71,37 @@ img, picture, video, svg {
   min-height: 100vh;
 }
 
+.site-footer {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 88px);
+  max-width: 1440px;
+  margin: 10px auto 0;
+  padding: 24px 0 30px;
+  text-align: center;
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-teal) 25%,
+    var(--color-purple) 75%,
+    transparent
+  );
+}
+
+.site-footer p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
 /* Layout Utilities */
 .container {
   max-width: 1200px;
@@ -148,5 +179,8 @@ p {
   }
   h2 {
     font-size: 1.8rem;
+  }
+  .site-footer {
+    width: calc(100% - 40px);
   }
 }
